@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Using EGARCH to forecast volatility in Microsoft Stock.</title>
+  <meta name="description" content="In this example, we are going to forecast the volatility of Microsoft stock. First, we will attempt to discover dataset. Our data set consists of closing pri...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/">
+  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="127.0.0.1:4000/feed.xml">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/evil-icons/1.7.8/evil-icons.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Google Analytics Code -->
+
+  <div class="off-canvas-container">
+    <div class="sidebar">
+  <div class="row">
+
+    <div class="column small-8 large-12">
+      <h1 class="sidebar__logo logo"><a href="/">Lanbig</a></h1>
+      <div class="sidebar__description font-tiny">In the world of Machine Leaning</div>
+    </div>
+
+    <label class="off-canvas-toggle"><span data-icon="ei-navicon" data-size="s"></span></label>
+
+    <div class="off-canvas-content">
+
+      <div class="column small-12 large-12">
+        <nav class="navigation">
+          <ul class="list-bare text-center">
+            
+              
+            
+              
+                
+                  <li>
+                    <a class="page-link" href="/about">About</a>
+                  </li>
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <li><a class="subscribe-button icon-feed" href="/feed.xml">RSS</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="column small-12 large-12">
+        <ul class="social-nav social-icons">
+
+          
+          <li>
+            <a href="http://www.github.com/lanbig" target="_blank">
+              <span data-icon="ei-sc-github" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/lanbig" target="_blank">
+              <span data-icon="ei-sc-linkedin" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:lanbig@msn.com" target="_blank">
+              <span data-icon="ei-envelope" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          <li>
+            <a class="toggle-search-button" href="#">
+              <span data-icon="ei-search" data-size="s"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar__bottom">
+        <div class="column small-12 large-12">
+          <div class="font-tiny">
+            &copy; 2016 Lanbig
+          </div>
+        </div>
+
+        <div class="column small-12 large-12 poweredby">
+          <div class="font-tiny">
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- off-canvas-content -->
+
+  </div>
+</div>
+
+<div class="search-form-container">
+
+  <form class="search-form">
+    <fieldset class="search-form__fieldset">
+      <div class="row">
+        <div class="column column--center large-8">
+          <input class="search-form__field" placeholder="Type to search" autofocus>
+          <input class="search-form__submit" type="submit" value="search">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="row">
+    <div class="column column--center large-8">
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+  <div data-icon="ei-close" data-size="s" class="close-search-button search-form-container__close"></div>
+
+</div>
+
+    
+
+
+
+<div class="wrapper">
+  <div class="row row--full">
+
+    <div class="column column--center medium-12 large-12">
+      <div class="grey-bg CoverImage FlexEmbed FlexEmbed--16by9" style="background-image: url(/images/posts/feature_images/timeseries1.jpg)"></div>
+    </div>
+
+    <div class="column column--center medium-12 large-10">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        
+          <meta itemprop="og:image" content="127.0.0.1:4000/images/posts/feature_images/timeseries1.jpg">
+        
+
+        <header class="post__header">
+          <h2 class="post__title" itemprop="name headline">Using EGARCH to forecast volatility in Microsoft Stock.</h2>
+          <time class="post__date" datetime="2016-04-10T00:00:00-05:00" itemprop="datePublished">Apr 10, 2016</time>
+        </header>
+
+        <div class="post-content" itemprop="articleBody">
+          <p>In this example, we are going to forecast the volatility of Microsoft stock. First, we will attempt to discover dataset. Our data set consists of closing prices of MSFT from January 2, 1998 to February 26, 2016. The number of observations is equal to 4,567 closing prices. Our data was retrieved from the Yahoo! Finance website under historical data. Here is plot of the time series</p>
+
+<h2 id="lets-start-with-exploratory-analysis-of-the-data">Let’s start with exploratory analysis of the data</h2>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">rugarch</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">fBasics</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">fUnitRoots</span><span class="p">)</span>
+
+<span class="n">myd</span><span class="o">=</span> <span class="n">read.table</span><span class="p">(</span><span class="s1">'MSFT.csv'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">','</span><span class="p">)</span>
+<span class="n">myd_lim</span> <span class="o">=</span> <span class="n">myd</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">4567</span><span class="p">,]</span>
+<span class="n">pricets</span> <span class="o">=</span> <span class="n">zoo</span><span class="p">(</span><span class="n">myd_lim</span><span class="o">$</span><span class="n">Adj.Close</span><span class="p">,</span> <span class="n">as.Date</span><span class="p">(</span><span class="n">as.character</span><span class="p">(</span><span class="n">myd_lim</span><span class="o">$</span><span class="n">Date</span><span class="p">),</span><span class="n">format</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="s2">"%Y-%m-%d"</span><span class="p">)))</span>
+
+<span class="n">autoplot</span><span class="p">(</span><span class="n">pricets</span><span class="p">)</span>
+
+</code></pre>
+</div>
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/timeseries.png" alt="MSFT Time Series" /></p>
+
+<p>Originally, we took the data set from the IPO (Initial Public Offering) date of March 13, 1986. However, there was too much of trend since the stock has split many times. With this in mind, we decided to start to our data set in February of 1998. As you can see there is a steep run up during the dot com bubble of the late 1990’s and early 2000. The tech bubble peaked on March 10, 2000. Next there was a steep drop, and then the stock hung around 20 for years. Then during the Mortgage crisis the stock dropped down into the teens, bottoming in 2009. Since the company made Satya Nadella the CEO, the stock has had a nice rally up to the volatility of early 2016.</p>
+
+<p>Next, we going to use acf for checking non-stationary behavior.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="n">acf</span><span class="p">(</span><span class="n">coredata</span><span class="p">(</span><span class="n">pricets</span><span class="p">))</span>
+
+</code></pre>
+</div>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="c1"># the ACF function of the first difference
+</span><span class="n">dx</span><span class="o">=</span><span class="n">diff</span><span class="p">(</span><span class="n">coredata</span><span class="p">(</span><span class="n">pricets</span><span class="p">))</span> 
+<span class="n">acf</span><span class="p">(</span><span class="n">as.vector</span><span class="p">(</span><span class="n">dx</span><span class="p">),</span><span class="n">lag.max</span><span class="o">=</span><span class="m">30</span><span class="p">,</span> <span class="n">main</span><span class="o">=</span><span class="s2">"ACF of first difference"</span><span class="p">)</span>
+<span class="n">adfTest</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="s2">"ct"</span><span class="p">))</span>
+<span class="n">adfTest</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="m">5</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="s2">"ct"</span><span class="p">))</span>
+<span class="n">adfTest</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">lags</span><span class="o">=</span><span class="m">7</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="s2">"ct"</span><span class="p">))</span>
+
+<span class="n">rets</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">pricets</span><span class="o">/</span><span class="n">lag</span><span class="p">(</span><span class="n">pricets</span><span class="p">,</span> <span class="m">-1</span><span class="p">))</span>
+<span class="n">head</span><span class="p">(</span><span class="n">rets</span><span class="p">)</span>
+
+<span class="n">basicStats</span><span class="p">(</span><span class="n">rets</span><span class="p">)</span>
+<span class="n">autoplot</span><span class="p">(</span><span class="n">rets</span><span class="p">)</span>
+
+</code></pre>
+</div>
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/logret.png" alt="MSFT Time Series" /></p>
+
+<p>The ACF plot(below) of the squared log returns of MSFT decays very slowly. The lags are all much larger than 2 standard deviations. This confirms large autocorrelations in the squared log returns. Therefore we can conclude that the log returns process has a strong non-linear dependence.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/archeffect.png" alt="MSFT Time Series" /></p>
+
+<p>Since we have confirmed serial correlation in the conditional variance of the process, we can say that the conditional variance of the process at time t is a function of the variance at previous times. Therefore we can use the past to explain or predict the current variance. This enables us to use GARCH model to model the variance of the MSFT stock price time series.</p>
+
+<h2 id="model-fitting">Model Fitting</h2>
+<p>This enables us to use GARCH model to model the variance of the MSFT stock price time series.
+Model fitting
+There were 4 models applied to MSFT stock:</p>
+
+<ul>
+  <li>
+    <p>GARCH with normally distributed errors</p>
+  </li>
+  <li>
+    <p>GARCH with T distributed errors</p>
+  </li>
+  <li>
+    <p>EGARCH with T distributed errors</p>
+  </li>
+  <li>
+    <p>TGARCH with T distributed errors</p>
+  </li>
+</ul>
+
+<p>As a result, EGARCH model turned out to be the best one based on BIC.
+Below was the model we selected because it was the best fit.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="c1">#MODEL 3: AR(0)-EARCH(1,1) with T distributed errors 
+</span><span class="n">egarch11.t.spec</span><span class="o">=</span><span class="n">ugarchspec</span><span class="p">(</span><span class="n">variance.model</span><span class="o">=</span><span class="n">list</span><span class="p">(</span><span class="n">model</span> <span class="o">=</span> <span class="s2">"eGARCH"</span><span class="p">,</span>
+                                                 <span class="n">garchOrder</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">)),</span> <span class="n">mean.model</span><span class="o">=</span><span class="n">list</span><span class="p">(</span><span class="n">armaOrder</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">)),</span>
+                             <span class="n">distribution.model</span> <span class="o">=</span> <span class="s2">"std"</span><span class="p">)</span>
+<span class="n">egarch11.t.fit</span><span class="o">=</span><span class="n">ugarchfit</span><span class="p">(</span><span class="n">spec</span><span class="o">=</span><span class="n">egarch11.t.spec</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">rets</span><span class="p">)</span>
+<span class="n">egarch11.t.fit</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">egarch11.t.fit</span><span class="p">)</span>
+
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; egarch11.t.fit
+
+*---------------------------------*
+*          GARCH Model Fit        *
+*---------------------------------*
+
+Conditional Variance Dynamics 	
+-----------------------------------
+GARCH Model	: eGARCH(1,1)
+Mean Model	: ARFIMA(0,0,0)
+Distribution	: std 
+
+Optimal Parameters
+------------------------------------
+        Estimate  Std. Error    t value Pr(&gt;|t|)
+mu      0.000163    0.000192    0.85054 0.395022
+omega  -0.045584    0.002250  -20.25762 0.000000
+alpha1 -0.033122    0.008084   -4.09718 0.000042
+beta1   0.994380    0.000360 2762.66379 0.000000
+gamma1  0.118418    0.009921   11.93615 0.000000
+shape   4.960095    0.338704   14.64433 0.000000
+
+Robust Standard Errors:
+        Estimate  Std. Error    t value Pr(&gt;|t|)
+mu      0.000163    0.000202    0.80726 0.419514
+omega  -0.045584    0.004711   -9.67646 0.000000
+alpha1 -0.033122    0.009556   -3.46629 0.000528
+beta1   0.994380    0.000559 1778.11697 0.000000
+gamma1  0.118418    0.012053    9.82473 0.000000
+shape   4.960095    0.379098   13.08394 0.000000
+
+LogLikelihood : 12249.67 
+</code></pre>
+</div>
+
+<p>Now, we are going to look into the result.</p>
+
+<ul>
+  <li>
+    <p>AR(0) mean model with standard EGARCH(1,1) model for variance &amp; t-distribution has been selected for the best model.</p>
+  </li>
+  <li>
+    <p>Fitted model: 
+rt = 0.000163 + at, at=σtet and 
+ln(σ2t) = -0.045584 + (-0.033122 et-1 + 0.118418(|et-1| - E(|et-1|)) + 0.994380 ln(σ2t-1) 
+With t distribution with 5 degrees of freedom (approximated to nearest integer).</p>
+  </li>
+  <li>
+    <p>Alpha1 is negative (= -0.033). Leverage effect is significant. Therefore volatility reacts more heavily to negative shocks.</p>
+  </li>
+  <li>
+    <p>Beta1 represents persistence of shocks on volatility. Our 1 = .99438 which is very high. Strong, long lasting persistence. Transition smoother and takes a long time from high to low volatility.</p>
+  </li>
+  <li>
+    <p>We used the BIC criteria to select the best model. This model had the smallest BIC at -5.3545 of the 4 models we created.</p>
+  </li>
+  <li>
+    <p>Pearson Goodness of Fit Test
+H0: selected distribution is a good fit for model
+Ha: selected distribution not a good fit
+The p-values &gt; .05 . Therefore we can’t reject the hypothesis that the selected t-distribution is a good fit for the model.</p>
+  </li>
+</ul>
+
+<p>T-distribution probability plot(left) for residuals show that t-distribution is appropriate. Some departure is seen under the left tail for extreme residuals (associated to extremely low returns)</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/std-qqplot.png" alt="MSFT Time Series" /></p>
+
+<h2 id="residual-analysis-and-model-diagnostics">Residual analysis and model diagnostics</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Weighted Ljung-Box Test on Standardized Residuals
+------------------------------------
+                        statistic p-value
+Lag[1]                      1.015  0.3136
+Lag[2*(p+q)+(p+q)-1][2]     1.299  0.4107
+Lag[4*(p+q)+(p+q)-1][5]     2.711  0.4623
+d.o.f=0
+H0 : No serial correlation
+
+Weighted Ljung-Box Test on Standardized Squared Residuals
+------------------------------------
+                        statistic p-value
+Lag[1]                    0.03079  0.8607
+Lag[2*(p+q)+(p+q)-1][5]   0.13676  0.9965
+Lag[4*(p+q)+(p+q)-1][9]   0.23303  0.9999
+d.o.f=2
+
+Weighted ARCH LM Tests
+------------------------------------
+            Statistic Shape Scale P-Value
+ARCH Lag[3]   0.01272 0.500 2.000  0.9102
+ARCH Lag[5]   0.17060 1.440 1.667  0.9723
+ARCH Lag[7]   0.19333 2.315 1.543  0.9973
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>Ljung Box tests for white noise behavior in residuals show that there is no evidence of autocorrelation in residuals. They behave as a white noise process.</p>
+  </li>
+  <li>
+    <p>Tests for ARCH/GARCH behavior in residuals reveal that there evidence of serial correlation in squared residuals. They behave as a white noise process.</p>
+  </li>
+</ul>
+
+<p>After conducting tests on the residuals, we can conclude the residuals behave as white noise and are random. Therefore our model has captured the behavior of the volatility.</p>
+
+<p>The plot on the left below shows the volatility of the MSFT stock return with 2 Conditional SD. Most of the time, the EGARCH model performed very well in order to capture the negative outliers or negative shocks. However, the model might not be able to capture the extreme shocks or outliers.</p>
+
+<p>The News Impact Curve(below right) reiterates the fact that in our model the leverage effect is significant and that the volatility of our data set reacts more strongly to  negative shocks than to positive shocks. You can see by looking at the graph that the magnitude of the volatility skyrockets as the shocks are more negative.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/residual.png" alt="MSFT Time Series" /></p>
+
+<h2 id="forecast-analysis">Forecast analysis</h2>
+<p>Based on the analysis, EGARCH(1,1) model for variance and t-distribution turned out to be the best model BIC supports using the EGARCH model better than the GARCH model and TGARCH model. Forecasts are computed using the ugarchforecast function for the next 12-step ahead. The plot of the forecast unconditional sigma shows that the stock volatility will slightly decrease in the next 12-step ahead.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/forecast.png" alt="MSFT Time Series" /></p>
+
+<h2 id="sum-up">Sum up</h2>
+
+<p>After running ACF tests and Dickey Fuller tests on the time series and first difference of the time series, we conclude the MSFT stock returns are non-stationary. Our ACF tests on log returns squared along with our failure to reject the null hypothesis of the Box-Ljung Test on the residuals leads us to conclude there is an ARCH Effect. After finding the ARCH Effect we used 4 different GARCH Models to model the volatility. Using the BIC Criteria, Pearson Goodness of Fit, and Residual analysis that our AR(0) EGARCH(1,1) with t-distribution is an adequate fit as a model for the data.</p>
+
+<p>The best model we found showed that MSFT stock reacts more violently to negative news than it does positive news. When bad news comes out like bad earnings, terrorism, or poor economic data, MSFT price tends to go down faster and farther than when good news comes out and the stock rises. Also, the transition from periods of rapid price changes to periods of stable prices is fairly smooth and takes longer in MSFT compared to some other securities.</p>
+
+
+          <div class="post__tags">
+            
+          </div>
+        </div>
+
+        <hr>
+
+        
+
+        <ul class="share-list">
+  <li>
+    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Using EGARCH to forecast volatility in Microsoft Stock.&url=127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
+      <div data-icon="ei-sc-twitter" data-size="s" class="share-list__icon share-list__icon--twitter"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://facebook.com/sharer.php?u=127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <div data-icon="ei-sc-facebook" data-size="s" class="share-list__icon share-list__icon--facebook"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://plus.google.com/share?url=127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/" rel="nofollow" target="_blank" title="Share on Google+">
+    <div data-icon="ei-sc-google-plus" data-size="s" class="share-list__icon share-list__icon--google"></div>
+    </a>
+  </li>
+</ul>
+
+        <h5 class="separator">
+  <span class="separator__title">Newsletter</span>
+</h5>
+
+<div class="box box--news-letter">
+  <form action="//aspirethemes.us12.list-manage.com/subscribe/post?u=9723f3c5c3a2637fbba3bc673&amp;id=7b50db9989" method="post" target="_blank">
+    <div class="row">
+      <div class="column medium-9 large-9">
+        <input type="email" name="EMAIL" placeholder="Your email address">
+      </div>
+      <div class="column medium-3 large-3">
+        <input type="submit" class="button button--expand" value="SIGN UP">
+      </div>
+    </div>
+  </form>
+</div>
+
+        <section class="disqus">
+  <h5 class="separator">
+    <span class="separator__title">Comments</span>
+  </h5>
+  <div id="disqus_thread"></div>
+
+<script>
+  var disqus_config = function () {
+    this.page.url = "127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/";
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//aspirethemes.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</section>
+      </article>
+    </div>
+
+  </div> <!-- row-->
+</div> <!-- wrapper -->
+  </div>
+
+  <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="/js/jquery.ghostHunter.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
+</html>

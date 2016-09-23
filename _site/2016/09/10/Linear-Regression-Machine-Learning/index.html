@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Linear Regression and Cost function</title>
+  <meta name="description" content="In this part of this exercise, I will implement linear regression with one variable to predict profits for a food truck.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/">
+  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="127.0.0.1:4000/feed.xml">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/evil-icons/1.7.8/evil-icons.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Google Analytics Code -->
+
+  <div class="off-canvas-container">
+    <div class="sidebar">
+  <div class="row">
+
+    <div class="column small-8 large-12">
+      <h1 class="sidebar__logo logo"><a href="/">Lanbig</a></h1>
+      <div class="sidebar__description font-tiny">In the world of Machine Leaning</div>
+    </div>
+
+    <label class="off-canvas-toggle"><span data-icon="ei-navicon" data-size="s"></span></label>
+
+    <div class="off-canvas-content">
+
+      <div class="column small-12 large-12">
+        <nav class="navigation">
+          <ul class="list-bare text-center">
+            
+              
+            
+              
+                
+                  <li>
+                    <a class="page-link" href="/about">About</a>
+                  </li>
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <li><a class="subscribe-button icon-feed" href="/feed.xml">RSS</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="column small-12 large-12">
+        <ul class="social-nav social-icons">
+
+          
+          <li>
+            <a href="http://www.github.com/lanbig" target="_blank">
+              <span data-icon="ei-sc-github" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/lanbig" target="_blank">
+              <span data-icon="ei-sc-linkedin" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:lanbig@msn.com" target="_blank">
+              <span data-icon="ei-envelope" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          <li>
+            <a class="toggle-search-button" href="#">
+              <span data-icon="ei-search" data-size="s"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar__bottom">
+        <div class="column small-12 large-12">
+          <div class="font-tiny">
+            &copy; 2016 Lanbig
+          </div>
+        </div>
+
+        <div class="column small-12 large-12 poweredby">
+          <div class="font-tiny">
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- off-canvas-content -->
+
+  </div>
+</div>
+
+<div class="search-form-container">
+
+  <form class="search-form">
+    <fieldset class="search-form__fieldset">
+      <div class="row">
+        <div class="column column--center large-8">
+          <input class="search-form__field" placeholder="Type to search" autofocus>
+          <input class="search-form__submit" type="submit" value="search">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="row">
+    <div class="column column--center large-8">
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+  <div data-icon="ei-close" data-size="s" class="close-search-button search-form-container__close"></div>
+
+</div>
+
+    
+
+
+
+<div class="wrapper">
+  <div class="row row--full">
+
+    <div class="column column--center medium-12 large-12">
+      <div class="grey-bg CoverImage FlexEmbed FlexEmbed--16by9" style="background-image: url(/images/posts/feature_images/linear-cost-function.png)"></div>
+    </div>
+
+    <div class="column column--center medium-12 large-10">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        
+          <meta itemprop="og:image" content="127.0.0.1:4000/images/posts/feature_images/linear-cost-function.png">
+        
+
+        <header class="post__header">
+          <h2 class="post__title" itemprop="name headline">Linear Regression and Cost function</h2>
+          <time class="post__date" datetime="2016-09-10T00:00:00-05:00" itemprop="datePublished">Sep 10, 2016</time>
+        </header>
+
+        <div class="post-content" itemprop="articleBody">
+          <p>In this part of this exercise, I will implement linear regression with one variable to predict profits for a food truck.</p>
+
+<p>The first figure shows the scatter plot of profit and population in the city. 
+<img src="http://127.0.0.1:4000/images/posts/content_images/linear-fit.png" alt="Scatter plot and linear line" /></p>
+
+<p>In this part, I will fit the linear regression parameters θ to our dataset using gradient descent.</p>
+
+<p>For population = 35,000, we predict a profit of 4519.767868
+For population = 70,000, we predict a profit of 45342.450129</p>
+
+<p>Visualizing J(theta_0, theta_1)</p>
+
+<p>Surface plot</p>
+
+<p>Contour plot
+<img src="http://127.0.0.1:4000/images/posts/content_images/linear-cost-function.png" alt="Surface plot" />
+<img src="http://127.0.0.1:4000/images/posts/content_images/linear-cost-function2.png" alt="Contour plot" /></p>
+
+          <div class="post__tags">
+            
+          </div>
+        </div>
+
+        <hr>
+
+        
+
+        <ul class="share-list">
+  <li>
+    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Linear Regression and Cost function&url=127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
+      <div data-icon="ei-sc-twitter" data-size="s" class="share-list__icon share-list__icon--twitter"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://facebook.com/sharer.php?u=127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <div data-icon="ei-sc-facebook" data-size="s" class="share-list__icon share-list__icon--facebook"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://plus.google.com/share?url=127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/" rel="nofollow" target="_blank" title="Share on Google+">
+    <div data-icon="ei-sc-google-plus" data-size="s" class="share-list__icon share-list__icon--google"></div>
+    </a>
+  </li>
+</ul>
+
+        <h5 class="separator">
+  <span class="separator__title">Newsletter</span>
+</h5>
+
+<div class="box box--news-letter">
+  <form action="//aspirethemes.us12.list-manage.com/subscribe/post?u=9723f3c5c3a2637fbba3bc673&amp;id=7b50db9989" method="post" target="_blank">
+    <div class="row">
+      <div class="column medium-9 large-9">
+        <input type="email" name="EMAIL" placeholder="Your email address">
+      </div>
+      <div class="column medium-3 large-3">
+        <input type="submit" class="button button--expand" value="SIGN UP">
+      </div>
+    </div>
+  </form>
+</div>
+
+        <section class="disqus">
+  <h5 class="separator">
+    <span class="separator__title">Comments</span>
+  </h5>
+  <div id="disqus_thread"></div>
+
+<script>
+  var disqus_config = function () {
+    this.page.url = "127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/";
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//aspirethemes.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</section>
+      </article>
+    </div>
+
+  </div> <!-- row-->
+</div> <!-- wrapper -->
+  </div>
+
+  <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="/js/jquery.ghostHunter.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Using R, Tableau and D3 to visualization Grocery sales and Marketing data set</title>
+  <meta name="description" content="Data science company Dunnhumby released a dataset called “The Complete Journey” that provided the data for our exploration. “The Complete Journey” provides a...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/">
+  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="127.0.0.1:4000/feed.xml">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/evil-icons/1.7.8/evil-icons.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Google Analytics Code -->
+
+  <div class="off-canvas-container">
+    <div class="sidebar">
+  <div class="row">
+
+    <div class="column small-8 large-12">
+      <h1 class="sidebar__logo logo"><a href="/">Lanbig</a></h1>
+      <div class="sidebar__description font-tiny">In the world of Machine Leaning</div>
+    </div>
+
+    <label class="off-canvas-toggle"><span data-icon="ei-navicon" data-size="s"></span></label>
+
+    <div class="off-canvas-content">
+
+      <div class="column small-12 large-12">
+        <nav class="navigation">
+          <ul class="list-bare text-center">
+            
+              
+            
+              
+                
+                  <li>
+                    <a class="page-link" href="/about">About</a>
+                  </li>
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <li><a class="subscribe-button icon-feed" href="/feed.xml">RSS</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="column small-12 large-12">
+        <ul class="social-nav social-icons">
+
+          
+          <li>
+            <a href="http://www.github.com/lanbig" target="_blank">
+              <span data-icon="ei-sc-github" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/lanbig" target="_blank">
+              <span data-icon="ei-sc-linkedin" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:lanbig@msn.com" target="_blank">
+              <span data-icon="ei-envelope" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          <li>
+            <a class="toggle-search-button" href="#">
+              <span data-icon="ei-search" data-size="s"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar__bottom">
+        <div class="column small-12 large-12">
+          <div class="font-tiny">
+            &copy; 2016 Lanbig
+          </div>
+        </div>
+
+        <div class="column small-12 large-12 poweredby">
+          <div class="font-tiny">
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- off-canvas-content -->
+
+  </div>
+</div>
+
+<div class="search-form-container">
+
+  <form class="search-form">
+    <fieldset class="search-form__fieldset">
+      <div class="row">
+        <div class="column column--center large-8">
+          <input class="search-form__field" placeholder="Type to search" autofocus>
+          <input class="search-form__submit" type="submit" value="search">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="row">
+    <div class="column column--center large-8">
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+  <div data-icon="ei-close" data-size="s" class="close-search-button search-form-container__close"></div>
+
+</div>
+
+    
+
+
+
+<div class="wrapper">
+  <div class="row row--full">
+
+    <div class="column column--center medium-12 large-12">
+      <div class="grey-bg CoverImage FlexEmbed FlexEmbed--16by9" style="background-image: url(/images/posts/feature_images/fruits-market-colors.jpg)"></div>
+    </div>
+
+    <div class="column column--center medium-12 large-10">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        
+          <meta itemprop="og:image" content="127.0.0.1:4000/images/posts/feature_images/fruits-market-colors.jpg">
+        
+
+        <header class="post__header">
+          <h2 class="post__title" itemprop="name headline">Using R, Tableau and D3 to visualization Grocery sales and Marketing data set</h2>
+          <time class="post__date" datetime="2016-03-15T00:00:00-05:00" itemprop="datePublished">Mar 15, 2016</time>
+        </header>
+
+        <div class="post-content" itemprop="articleBody">
+          <p>Data science company Dunnhumby released a dataset called “The Complete Journey” that provided the data for our exploration. “The Complete Journey” provides a comprehensive look at grocery sales and marketing over a 2-year period.</p>
+
+<p>In this example, we sought to better understand these relationships through a variety of visualization techniques.</p>
+
+<p>The data includes item-level detail for more than 276,484 transactions, as well as data on marketing efforts during the time period, detailed specifications on the 92,260 products available for sale, and demographic data for 2,500 customers.</p>
+
+<p>This visualization was run in R, Tableau and D3. <a href="https://github.com/Lanbig/CSC465-Project">Link to Github</a> for source code.</p>
+
+<h2 id="sale-trends">Sale Trends</h2>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/viz1.png" alt="Sale Trend Heat Map" /></p>
+
+<p>A calendar heat map is a graphical representation that can visualize values over days in a calendar. Moreover, using this heat map allowed us to see the overall pattern in the data set. In this graph, our group used red color to represent the days that had a high sales value, and used blue to represent the days that had a low sales value.</p>
+
+<p><strong>Weekly pattern of sales value</strong></p>
+
+<ul>
+  <li>Customers usually go shopping on the weekend.</li>
+</ul>
+
+<p><strong>Daily pattern of sales value</strong></p>
+
+<ul>
+  <li>The customers spent more money on some special days. For example, the customers spent a lot of money at this grocery store on the days before Thanksgiving and Christmas Day.</li>
+</ul>
+
+<p><strong>Ideas for further exploration</strong></p>
+
+<ul>
+  <li>Sales could be plotted against the volume of items sold to see if some days sell more expensive products</li>
+</ul>
+
+<h2 id="department-and-product-buying-associations">Department and Product Buying Associations</h2>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/viz2.png" alt="Network Graph" /></p>
+
+<p>Network graphs revealed the relationships between different departments and product categories. With this plot, we used lines with direction, and combined the thickness of lines to represent relationships between collections of data (departments/products) that related to buyers’ habits.</p>
+
+<p><strong>Department patterns</strong></p>
+
+<ul>
+  <li>
+    <p>Grocery is the main department that customers always shop.</p>
+  </li>
+  <li>
+    <p>The top three department pairs that have the most shopper traffic are Grocery:Nutrition, Grocery:Meat-Packaged and Meat-Packaged:Seafood-Packaged.</p>
+  </li>
+</ul>
+
+<p><strong>Product relationships</strong></p>
+
+<ul>
+  <li>
+    <p>Shoppers who have a baby are most likely to buy film/camera products and beer, rather than vitamins.</p>
+  </li>
+  <li>
+    <p>Customers who usually buy fitness/diet products tend to pick up beers/ales, as well.</p>
+  </li>
+  <li>
+    <p>The most coffee buyers possibly have a baby (from the thickness of coffee’s edge lines).</p>
+  </li>
+</ul>
+
+<p><strong>Ideas for further exploration</strong></p>
+
+<ul>
+  <li>
+    <p>Network maps could be constructed for different stores to see if similar products are purchased together across all stores.</p>
+  </li>
+  <li>
+    <p>Customers could be segmented by age, with a separate network graph for each. This would enable us to see if buying habits change with age.</p>
+  </li>
+</ul>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/viz3.png" alt="Chord Diagram" /></p>
+
+<p>We used chord diagram as an alternative beyond network graph to display inter-relationships among the products in the grocery data set. Each product is divided and represented on the edge of a circle with different colors. This chord diagram was developed by D3. One important advantage of using D3 is that it is an interactive webpage. It also allows you to hover the mouse over the products to show the inter-relationship of each product. Coffee for example, you will see multiple lines with different colors and thickness clearly show the relationships between coffee and another product.</p>
+
+<p><strong>Link for chord diagram</strong></p>
+
+<ul>
+  <li>http://demo.lanbig.com/CSC465/d3-chord-diagrams-master/pro.html</li>
+  <li>http://demo.lanbig.com/CSC465/d3-chord-diagrams-master/dep.html</li>
+</ul>
+
+<p><strong>Product relationships</strong></p>
+
+<ul>
+  <li>Customers are most likely buy coffee with beers/ ales, and least likely to buy with film and camera products.
+People who have a baby are more likely to buy baby foods with beers/ ales and coffee</li>
+</ul>
+
+<p><strong>Ideas for further exploration</strong></p>
+
+<ul>
+  <li>All products could be added to the chord diagram and should be divided by department and arranged until the final diagram is not too crowded.</li>
+</ul>
+
+<h2 id="one-last-thing">One last thing..</h2>
+<p><strong>Tree map and Bubble plot</strong></p>
+
+<p>This tree map sought to explore the customer age and what type of products that customs were more likely to purchase at the store. This graph can help the store target their customers more effectively. Size shows sum of sales value.  Color shows the number of coupons applied to the product departments. The marks are labeled by customers age and product departments.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/viz4.png" alt="Chord Diagram" />
+<img src="http://127.0.0.1:4000/images/posts/content_images/viz5.png" alt="Chord Diagram" /></p>
+
+
+          <div class="post__tags">
+            
+          </div>
+        </div>
+
+        <hr>
+
+        
+
+        <ul class="share-list">
+  <li>
+    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Using R, Tableau and D3 to visualization Grocery sales and Marketing data set&url=127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
+      <div data-icon="ei-sc-twitter" data-size="s" class="share-list__icon share-list__icon--twitter"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://facebook.com/sharer.php?u=127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <div data-icon="ei-sc-facebook" data-size="s" class="share-list__icon share-list__icon--facebook"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://plus.google.com/share?url=127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/" rel="nofollow" target="_blank" title="Share on Google+">
+    <div data-icon="ei-sc-google-plus" data-size="s" class="share-list__icon share-list__icon--google"></div>
+    </a>
+  </li>
+</ul>
+
+        <h5 class="separator">
+  <span class="separator__title">Newsletter</span>
+</h5>
+
+<div class="box box--news-letter">
+  <form action="//aspirethemes.us12.list-manage.com/subscribe/post?u=9723f3c5c3a2637fbba3bc673&amp;id=7b50db9989" method="post" target="_blank">
+    <div class="row">
+      <div class="column medium-9 large-9">
+        <input type="email" name="EMAIL" placeholder="Your email address">
+      </div>
+      <div class="column medium-3 large-3">
+        <input type="submit" class="button button--expand" value="SIGN UP">
+      </div>
+    </div>
+  </form>
+</div>
+
+        <section class="disqus">
+  <h5 class="separator">
+    <span class="separator__title">Comments</span>
+  </h5>
+  <div id="disqus_thread"></div>
+
+<script>
+  var disqus_config = function () {
+    this.page.url = "127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/";
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//aspirethemes.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</section>
+      </article>
+    </div>
+
+  </div> <!-- row-->
+</div> <!-- wrapper -->
+  </div>
+
+  <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="/js/jquery.ghostHunter.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
+</html>

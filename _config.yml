@@ -1,0 +1,47 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Lanbig
+email: lanbig@msn.com
+description: In the world of Machine Leaning 
+baseurl: '' # the subpath of your site, e.g. /blog
+url: '127.0.0.1:4000' # the base hostname & protocol for your site
+twitter_username: 
+github_username: lanbig
+linkedin_username: lanbig
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+include:
+  - _pages
+exclude:
+  - Gemfile
+  - Gemfile.lock
+gems:
+  - jekyll-paginate
+  - jekyll/tagging
+
+# Pagination
+paginate: 12
+
+# Tags
+tag_page_layout: tag_page
+tag_page_dir: tag
+tag_permalink_style: pretty
+
+authors:
+  john:
+    name: John Adam
+    display_name: John Adam
+    bio: Ben has over 3 years of experience as a web writer, and also a photographer.
+    gravatar: http://east.aspirethemes.com/content/images/2016/01/smiles-man.jpg
+    email: john@aspirethemes.com
+    web: http://aspirethemes.com
+    twitter: aspirethemes
+    github: aspirethemes

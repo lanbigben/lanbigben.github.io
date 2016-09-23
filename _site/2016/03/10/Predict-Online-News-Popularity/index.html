@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Building Predictive Modeling with Decision Tree, Naïve Bayes, Random forest in R.</title>
+  <meta name="description" content="Online News Popularity data set has been selected from the UC Irvine Machine Learning Repository Link. The articles in this data set were published by Mashab...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/">
+  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="127.0.0.1:4000/feed.xml">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/evil-icons/1.7.8/evil-icons.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Google Analytics Code -->
+
+  <div class="off-canvas-container">
+    <div class="sidebar">
+  <div class="row">
+
+    <div class="column small-8 large-12">
+      <h1 class="sidebar__logo logo"><a href="/">Lanbig</a></h1>
+      <div class="sidebar__description font-tiny">In the world of Machine Leaning</div>
+    </div>
+
+    <label class="off-canvas-toggle"><span data-icon="ei-navicon" data-size="s"></span></label>
+
+    <div class="off-canvas-content">
+
+      <div class="column small-12 large-12">
+        <nav class="navigation">
+          <ul class="list-bare text-center">
+            
+              
+            
+              
+                
+                  <li>
+                    <a class="page-link" href="/about">About</a>
+                  </li>
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <li><a class="subscribe-button icon-feed" href="/feed.xml">RSS</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="column small-12 large-12">
+        <ul class="social-nav social-icons">
+
+          
+          <li>
+            <a href="http://www.github.com/lanbig" target="_blank">
+              <span data-icon="ei-sc-github" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/lanbig" target="_blank">
+              <span data-icon="ei-sc-linkedin" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:lanbig@msn.com" target="_blank">
+              <span data-icon="ei-envelope" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          <li>
+            <a class="toggle-search-button" href="#">
+              <span data-icon="ei-search" data-size="s"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar__bottom">
+        <div class="column small-12 large-12">
+          <div class="font-tiny">
+            &copy; 2016 Lanbig
+          </div>
+        </div>
+
+        <div class="column small-12 large-12 poweredby">
+          <div class="font-tiny">
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- off-canvas-content -->
+
+  </div>
+</div>
+
+<div class="search-form-container">
+
+  <form class="search-form">
+    <fieldset class="search-form__fieldset">
+      <div class="row">
+        <div class="column column--center large-8">
+          <input class="search-form__field" placeholder="Type to search" autofocus>
+          <input class="search-form__submit" type="submit" value="search">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="row">
+    <div class="column column--center large-8">
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+  <div data-icon="ei-close" data-size="s" class="close-search-button search-form-container__close"></div>
+
+</div>
+
+    
+
+
+
+<div class="wrapper">
+  <div class="row row--full">
+
+    <div class="column column--center medium-12 large-12">
+      <div class="grey-bg CoverImage FlexEmbed FlexEmbed--16by9" style="background-image: url(/images/posts/feature_images/newsheader.jpg)"></div>
+    </div>
+
+    <div class="column column--center medium-12 large-10">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        
+          <meta itemprop="og:image" content="127.0.0.1:4000/images/posts/feature_images/newsheader.jpg">
+        
+
+        <header class="post__header">
+          <h2 class="post__title" itemprop="name headline">Building Predictive Modeling with Decision Tree, Naïve Bayes, Random forest in R.</h2>
+          <time class="post__date" datetime="2016-03-10T00:00:00-06:00" itemprop="datePublished">Mar 10, 2016</time>
+        </header>
+
+        <div class="post-content" itemprop="articleBody">
+          <p>Online News Popularity data set has been selected from the UC Irvine Machine Learning Repository <a href="https://archive.ics.uci.edu/ml/datasets/Online+News+Popularity">Link</a>. The articles in this data set were published by Mashable. This data set is donated on January 8, 2015. The data set includes 39797 observations and 61 combined attributes. The goal of this project is to find non-trivial, potential useful knowledge and predict the popularity of the articles, which is the number of shares in social networks.</p>
+
+<ul>
+  <li>The explanatory attributes for Online News Popularity data set include URL of the article, number of words in the title, number of words in the content, number of images, number of videos, polarity of positive words and polarity of negative words are numeric. These attributes can be used to create a predictive model.</li>
+  <li>The response attribute is the number of shares in social network (popularity).</li>
+</ul>
+
+<p>The full source code is in <a href="https://gist.github.com/Lanbig/9c365cbd372c0d7aed81011338893e91">Github Gist</a></p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="c1">###########Required Library##########
+</span><span class="n">library</span><span class="p">(</span><span class="n">rpart.plot</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">e1071</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">klaR</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">rattle</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">rpart.plot</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">RColorBrewer</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="data-exploratory">Data Exploratory</h2>
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">theme_set</span><span class="p">(</span><span class="n">theme_bw</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">28</span><span class="p">))</span>
+
+<span class="n">qplot</span><span class="p">(</span><span class="n">df.onNews</span><span class="o">$</span><span class="n">dataChannel</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="s2">"histogram"</span><span class="p">,</span><span class="n">ylab</span> <span class="o">=</span> <span class="s2">"count"</span><span class="p">,</span><span class="n">binwidth</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span>
+      <span class="n">main</span> <span class="o">=</span> <span class="s2">"Histogram for data channel"</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s2">"Channel"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">df.onNews</span><span class="o">$</span><span class="n">share2bins</span> <span class="p">)</span> 
+
+<span class="n">qplot</span><span class="p">(</span><span class="n">df.onNews</span><span class="o">$</span><span class="n">pubDay</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="s2">"histogram"</span><span class="p">,</span><span class="n">ylab</span> <span class="o">=</span> <span class="s2">"count"</span><span class="p">,</span><span class="n">binwidth</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span>
+      <span class="n">main</span> <span class="o">=</span> <span class="s2">"Histogram for publication day"</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s2">"Day"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">df.onNews</span><span class="o">$</span><span class="n">share2bins</span> <span class="p">)</span> 
+</code></pre>
+</div>
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn4.png" alt="Decision Tree" /></p>
+
+<p>Most positive cases (high popularity) are captured in Lifestyle, social and tech channel. These channels seem to be much popular than business, entertainment and word channel. For example, Social channel had 76 percent of positive cases (high popularity) and technology channel had 64 percent of positive cases.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn5.png" alt="Decision Tree" /></p>
+
+<p>In reviewing positive cases (high popularity) on the publication day, most news shared on weekend seems to be in the “high popularity” group. About 75 percent of the news published on Sunday was popular. The news published on weekday tent to be in “low popularity” group. For example, the majority of the news shared on Wednesday and Tuesday were unpopular.</p>
+
+<h2 id="model-fitting">Model Fitting</h2>
+
+<p>In this data set, we’ll define an 66%/34% for training and test data.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="n">set.seed</span><span class="p">(</span><span class="m">415</span><span class="p">)</span>
+<span class="c1"># define an 66%/34% train/test split of the dataset
+</span><span class="n">trainIndex</span> <span class="o">&lt;-</span> <span class="n">createDataPartition</span><span class="p">(</span><span class="n">df.onNews</span><span class="o">$</span><span class="n">share2bins</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="m">0.66</span><span class="p">,</span> <span class="n">list</span><span class="o">=</span><span class="n">FALSE</span><span class="p">)</span>
+<span class="n">data_train</span> <span class="o">&lt;-</span> <span class="n">df.onNews</span><span class="p">[</span> <span class="n">trainIndex</span><span class="p">,]</span>
+<span class="n">data_test</span> <span class="o">&lt;-</span> <span class="n">df.onNews</span><span class="p">[</span><span class="o">-</span><span class="n">trainIndex</span><span class="p">,]</span>
+</code></pre>
+</div>
+
+<p><strong>Decision Tree Analysis</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>fit.rpart8= train(share2bins ~ . ,data=data_train , method= "rpart", tuneLength = 8, trControl=trainControl(method="cv",number=10))
+
+&gt; print(fit.rpart8)
+CART 
+
+26166 samples
+   47 predictor
+    2 classes: 'high', 'low' 
+
+No pre-processing
+Resampling: Cross-Validated (10 fold) 
+Summary of sample sizes: 23550, 23550, 23548, 23550, 23549, 23550, ... 
+Resampling results across tuning parameters:
+
+  cp           Accuracy   Kappa       Accuracy SD  Kappa SD  
+  0.003605375  0.6339914  0.25555564  0.009806259  0.02197829
+  0.004629630  0.6331886  0.25559910  0.007883932  0.01681616
+  0.008030154  0.6297105  0.25140243  0.006750814  0.01460905
+  0.008767617  0.6284876  0.24931886  0.006772829  0.01474812
+  0.014175680  0.6216475  0.23057982  0.009779804  0.01893964
+  0.020567027  0.6144631  0.21667075  0.011735050  0.02443565
+  0.040560472  0.6005906  0.19493916  0.012689902  0.02248112
+  0.124713209  0.5495640  0.05205161  0.025837704  0.08415047
+
+Accuracy was used to select the optimal model using  the largest value.
+The final value used for the model was cp = 0.003605375.
+
+fancyRpartPlot(fit.rpart8$finalModel)
+</code></pre>
+</div>
+<p>The visualization below shows the tree structure and the branches of tree. The most important five OnlineNewsPopularity data features are kw_avg_avg, data channel entertainment, data channel tech, is_weekend and dataChanelSocial. These features are on the top of the decision tree and they have the most important power to separate the classes.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn1.png" alt="Decision Tree" /></p>
+
+<p><strong>Naïve Bayes Analysis</strong></p>
+
+<p>This technique is based applying Bayes’ theorem. One significant benefit of using Naïve Bayes Analysis is that it can be very fast compared to Random Forest modeling technique or other methods.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">fit.nb</span><span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">share2bins</span> <span class="o">~</span> <span class="err">.</span> <span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data_train</span> <span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"nb"</span><span class="p">,</span> <span class="n">trControl</span><span class="o">=</span><span class="n">trainControl</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"cv"</span><span class="p">,</span><span class="n">number</span><span class="o">=</span><span class="m">10</span><span class="p">))</span>
+
+<span class="o">&gt;</span> <span class="n">fit.nb</span>
+<span class="n">Naive</span> <span class="n">Bayes</span> 
+
+<span class="m">26166</span> <span class="n">samples</span>
+   <span class="m">47</span> <span class="n">predictor</span>
+    <span class="m">2</span> <span class="n">classes</span><span class="o">:</span> <span class="s1">'high'</span><span class="p">,</span> <span class="s1">'low'</span> 
+
+<span class="n">No</span> <span class="n">pre</span><span class="o">-</span><span class="n">processing</span>
+<span class="n">Resampling</span><span class="o">:</span> <span class="n">Cross</span><span class="o">-</span><span class="n">Validated</span> <span class="p">(</span><span class="m">10</span> <span class="n">fold</span><span class="p">)</span> 
+<span class="n">Summary</span> <span class="n">of</span> <span class="n">sample</span> <span class="n">sizes</span><span class="o">:</span> <span class="m">23549</span><span class="p">,</span> <span class="m">23550</span><span class="p">,</span> <span class="m">23550</span><span class="p">,</span> <span class="m">23550</span><span class="p">,</span> <span class="m">23549</span><span class="p">,</span> <span class="m">23549</span><span class="p">,</span> <span class="k">...</span> 
+<span class="n">Resampling</span> <span class="n">results</span> <span class="n">across</span> <span class="n">tuning</span> <span class="n">parameters</span><span class="o">:</span>
+
+  <span class="n">usekernel</span>  <span class="n">Accuracy</span>   <span class="n">Kappa</span>       <span class="n">Accuracy</span> <span class="n">SD</span>  <span class="n">Kappa</span> <span class="n">SD</span>  
+  <span class="n">FALSE</span>      <span class="m">0.5198759</span>  <span class="m">0.08688965</span>  <span class="m">0.03318579</span>   <span class="m">0.05532158</span>
+   <span class="n">TRUE</span>      <span class="m">0.5998991</span>  <span class="m">0.21353378</span>  <span class="m">0.02759259</span>   <span class="m">0.04304326</span>
+
+</code></pre>
+</div>
+
+<p><strong>Random Forest Analysis</strong></p>
+
+<p>From the Kaggle competitions, random forest analysis tends to do very well and scoring high on the Kaggle leaderboard because a random forest analysis improves predictive accuracy by generating a large number of bootstrapped trees (boosting mechanisms)</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="o">&gt;</span> <span class="n">fit.rf</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">share2bins</span> <span class="o">~</span> <span class="err">.</span> <span class="p">,</span><span class="n">data_train</span> <span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"rf"</span><span class="p">,</span> <span class="n">ntree</span><span class="o">=</span><span class="m">501</span> <span class="p">,</span> <span class="n">tuneGrid</span> <span class="o">=</span> <span class="n">data.frame</span><span class="p">(</span><span class="n">mtry</span> <span class="o">=</span> <span class="m">4</span><span class="p">),</span> 
+<span class="o">+</span>                <span class="n">allowParallel</span><span class="o">=</span><span class="n">TRUE</span><span class="p">,</span><span class="n">trControl</span><span class="o">=</span><span class="n">trainControl</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"cv"</span><span class="p">,</span><span class="n">number</span><span class="o">=</span><span class="m">10</span><span class="p">)</span> <span class="p">)</span>
+<span class="o">&gt;</span> 
+ 
+<span class="n">Random</span> <span class="n">Forest</span> 
+
+<span class="m">26166</span> <span class="n">samples</span>
+   <span class="m">47</span> <span class="n">predictors</span>
+    <span class="m">2</span> <span class="n">classes</span><span class="o">:</span> <span class="s1">'high'</span><span class="p">,</span> <span class="s1">'low'</span> 
+
+<span class="n">No</span> <span class="n">pre</span><span class="o">-</span><span class="n">processing</span>
+<span class="n">Resampling</span><span class="o">:</span> <span class="n">Cross</span><span class="o">-</span><span class="n">Validated</span> <span class="p">(</span><span class="m">3</span> <span class="n">fold</span><span class="p">)</span> 
+<span class="n">Summary</span> <span class="n">of</span> <span class="n">sample</span> <span class="n">sizes</span><span class="o">:</span> <span class="m">17444</span><span class="p">,</span> <span class="m">17444</span><span class="p">,</span> <span class="m">17444</span> 
+<span class="n">Resampling</span> <span class="n">results</span>
+
+  <span class="n">Accuracy</span>   <span class="n">Kappa</span>      <span class="n">Accuracy</span> <span class="n">SD</span>  <span class="n">Kappa</span> <span class="n">SD</span>  
+  <span class="m">0.6651762</span>  <span class="m">0.3222725</span>  <span class="m">0.006759968</span>  <span class="m">0.01355711</span>
+
+<span class="n">Tuning</span> <span class="n">parameter</span> <span class="s1">'mtry'</span> <span class="n">was</span> <span class="n">held</span> <span class="n">constant</span> <span class="n">at</span> <span class="n">a</span> <span class="n">value</span> <span class="n">of</span> <span class="m">4</span>
+</code></pre>
+</div>
+<p>The visualization below reveals the important variables used in splitting nodes down the tree.  For example, the most important Online News Popularity dataset features are Is_weekend, Kw_avg_avg, Datachanel and Self_reference variables. Most important features from a random forest analysis are about the same with decision tree analysis.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn2.png" alt="Random Forest" /></p>
+
+<h2 id="performance-evaluation">Performance Evaluation</h2>
+<p>As a result, Naïve Bayes does not work very well with the dataset. Decision tree is one the useful modeling technique since this technique is easy to interpret and understand the result. Moreover, random forest analysis is the best modeling technique with the dataset because it gets the highest accuracy in both training and testing dataset.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn3.png" alt="Performance comparision" /></p>
+
+<p>For recommendation and future action, there are some outliers in the variables and these outliers may impact on the accuracy of the predictive models.</p>
+
+
+          <div class="post__tags">
+            
+          </div>
+        </div>
+
+        <hr>
+
+        
+
+        <ul class="share-list">
+  <li>
+    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Building Predictive Modeling with Decision Tree, Naïve Bayes, Random forest in R.&url=127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
+      <div data-icon="ei-sc-twitter" data-size="s" class="share-list__icon share-list__icon--twitter"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://facebook.com/sharer.php?u=127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <div data-icon="ei-sc-facebook" data-size="s" class="share-list__icon share-list__icon--facebook"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://plus.google.com/share?url=127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/" rel="nofollow" target="_blank" title="Share on Google+">
+    <div data-icon="ei-sc-google-plus" data-size="s" class="share-list__icon share-list__icon--google"></div>
+    </a>
+  </li>
+</ul>
+
+        <h5 class="separator">
+  <span class="separator__title">Newsletter</span>
+</h5>
+
+<div class="box box--news-letter">
+  <form action="//aspirethemes.us12.list-manage.com/subscribe/post?u=9723f3c5c3a2637fbba3bc673&amp;id=7b50db9989" method="post" target="_blank">
+    <div class="row">
+      <div class="column medium-9 large-9">
+        <input type="email" name="EMAIL" placeholder="Your email address">
+      </div>
+      <div class="column medium-3 large-3">
+        <input type="submit" class="button button--expand" value="SIGN UP">
+      </div>
+    </div>
+  </form>
+</div>
+
+        <section class="disqus">
+  <h5 class="separator">
+    <span class="separator__title">Comments</span>
+  </h5>
+  <div id="disqus_thread"></div>
+
+<script>
+  var disqus_config = function () {
+    this.page.url = "127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/";
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//aspirethemes.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</section>
+      </article>
+    </div>
+
+  </div> <!-- row-->
+</div> <!-- wrapper -->
+  </div>
+
+  <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="/js/jquery.ghostHunter.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
+</html>

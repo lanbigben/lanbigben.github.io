@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ensemble Classifier - Machine Learning</title>
+  <meta name="description" content="Boosting and Bagging are said to be methods that can improve classification algorithm performance. Having also learned multiple ensemble classifier methods, ...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/">
+  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="127.0.0.1:4000/feed.xml">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/evil-icons/1.7.8/evil-icons.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Google Analytics Code -->
+
+  <div class="off-canvas-container">
+    <div class="sidebar">
+  <div class="row">
+
+    <div class="column small-8 large-12">
+      <h1 class="sidebar__logo logo"><a href="/">Lanbig</a></h1>
+      <div class="sidebar__description font-tiny">In the world of Machine Leaning</div>
+    </div>
+
+    <label class="off-canvas-toggle"><span data-icon="ei-navicon" data-size="s"></span></label>
+
+    <div class="off-canvas-content">
+
+      <div class="column small-12 large-12">
+        <nav class="navigation">
+          <ul class="list-bare text-center">
+            
+              
+            
+              
+                
+                  <li>
+                    <a class="page-link" href="/about">About</a>
+                  </li>
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+              
+                
+              
+            
+            <li><a class="subscribe-button icon-feed" href="/feed.xml">RSS</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="column small-12 large-12">
+        <ul class="social-nav social-icons">
+
+          
+          <li>
+            <a href="http://www.github.com/lanbig" target="_blank">
+              <span data-icon="ei-sc-github" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+
+          
+          <li>
+            <a href="https://www.linkedin.com/in/lanbig" target="_blank">
+              <span data-icon="ei-sc-linkedin" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="mailto:lanbig@msn.com" target="_blank">
+              <span data-icon="ei-envelope" data-size="s"></span>
+            </a>
+          </li>
+          
+
+          <li>
+            <a class="toggle-search-button" href="#">
+              <span data-icon="ei-search" data-size="s"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar__bottom">
+        <div class="column small-12 large-12">
+          <div class="font-tiny">
+            &copy; 2016 Lanbig
+          </div>
+        </div>
+
+        <div class="column small-12 large-12 poweredby">
+          <div class="font-tiny">
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- off-canvas-content -->
+
+  </div>
+</div>
+
+<div class="search-form-container">
+
+  <form class="search-form">
+    <fieldset class="search-form__fieldset">
+      <div class="row">
+        <div class="column column--center large-8">
+          <input class="search-form__field" placeholder="Type to search" autofocus>
+          <input class="search-form__submit" type="submit" value="search">
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+  <div class="row">
+    <div class="column column--center large-8">
+      <div class="search-results"></div>
+    </div>
+  </div>
+
+  <div data-icon="ei-close" data-size="s" class="close-search-button search-form-container__close"></div>
+
+</div>
+
+    
+
+
+
+<div class="wrapper">
+  <div class="row row--full">
+
+    <div class="column column--center medium-12 large-12">
+      <div class="grey-bg CoverImage FlexEmbed FlexEmbed--16by9" style="background-image: url(/images/posts/feature_images/ensemble4.jpg)"></div>
+    </div>
+
+    <div class="column column--center medium-12 large-10">
+      <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+        
+          <meta itemprop="og:image" content="127.0.0.1:4000/images/posts/feature_images/ensemble4.jpg">
+        
+
+        <header class="post__header">
+          <h2 class="post__title" itemprop="name headline">Ensemble Classifier - Machine Learning</h2>
+          <time class="post__date" datetime="2016-05-10T00:00:00-05:00" itemprop="datePublished">May 10, 2016</time>
+        </header>
+
+        <div class="post-content" itemprop="articleBody">
+          <p>Boosting and Bagging are said to be methods that can improve classification algorithm performance. Having also learned multiple ensemble classifier methods, we wonder which methods between Boosting and Bagging can be outperformed for prediction accuracy improvement. Our goals are to experiment different types of weak-learner-based ensemble classifier with boosting and bagging parameters, and compare them with the performance evaluation procedures.</p>
+
+<p>The full source code is in <a href="https://gist.github.com/Lanbig/4a9cd4df96dfbabf3b6c2a9e5823e58e">Github Gist</a></p>
+
+<p>Required library list.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="n">require</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="n">require</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="n">require</span><span class="p">(</span><span class="n">randomForest</span><span class="p">)</span>
+<span class="n">require</span><span class="p">(</span><span class="n">e1071</span><span class="p">)</span>
+<span class="n">require</span><span class="p">(</span><span class="n">pROC</span><span class="p">)</span>
+<span class="n">require</span><span class="p">(</span><span class="s2">"foreach"</span><span class="p">)</span>
+<span class="n">require</span><span class="p">(</span><span class="s2">"doSNOW"</span><span class="p">)</span>
+<span class="n">require</span><span class="p">(</span><span class="n">party</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<h2 id="data-preprocessing">Data Preprocessing</h2>
+
+<p>Our data set consists of 5 malignancy ratings (1, 2, 3, 4 and 5) given by 4 different radiologists, we then decide to bin the classes by grouping them into 2 classes -class 1, 2, 3 and class 4 and 5 as inconclusive and likely suspicious of malignancy respectively.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="n">myd</span> <span class="o">=</span> <span class="n">read.csv</span><span class="p">(</span><span class="s2">"Lung Cancer dataset/LIDC_Data_SEIDEL_01-05-2015.csv"</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="n">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">','</span><span class="p">)</span>
+<span class="n">mycl</span> <span class="o">=</span> <span class="n">data.frame</span><span class="p">(</span><span class="n">matrix</span><span class="p">(</span><span class="n">NA</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">myd</span><span class="p">))</span> <span class="p">)</span>
+<span class="n">names</span><span class="p">(</span><span class="n">mycl</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">paste</span><span class="p">(</span><span class="s2">"class"</span><span class="p">)</span>
+
+<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="m">1</span><span class="o">:</span><span class="n">nrow</span><span class="p">(</span><span class="n">myd</span><span class="p">))</span>
+<span class="p">{</span>
+  <span class="n">row</span> <span class="o">&lt;-</span> <span class="n">myd</span><span class="p">[</span><span class="n">i</span><span class="p">,]</span>
+  <span class="n">avg</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="m">5</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="m">6</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="m">7</span><span class="p">]</span><span class="o">+</span><span class="n">row</span><span class="p">[</span><span class="m">8</span><span class="p">])</span><span class="o">/</span><span class="m">4</span>
+  <span class="n">mycl</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="m">1</span><span class="p">]</span> <span class="o">&lt;-</span>  <span class="n">ifelse</span><span class="p">(</span><span class="n">avg</span> <span class="o">&gt;=</span><span class="m">4</span> <span class="p">,</span> <span class="s2">"Likely"</span><span class="p">,</span> <span class="s2">"Inconclusive"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">qplot</span><span class="p">(</span><span class="n">mycl</span><span class="o">$</span><span class="n">class</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">,</span><span class="n">ylab</span> <span class="o">=</span> <span class="s2">"count"</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">"Class Distribution "</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s2">"Class"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">as.factor</span><span class="p">(</span><span class="n">mycl</span><span class="o">$</span><span class="n">class</span><span class="p">))</span> 
+</code></pre>
+</div>
+
+<p>we can obviously see the data become imbalanced with inconclusive and likely class, 682 and 128 respectively. Minorities would be ignored from the model prediction. We resolved this issue by applying SMOTE function in DMwR library on raw data. With this function, it is said by Torgo, L. (2010) to artificially generate new examples from the minority class using the nearest neighbors of these cases, and majority class examples are also under-sampled, leading to a more balanced dataset.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="c1">#######################   SMOTE     #######################################
+######## Balance the data set, comment this part if you don't want ########
+</span><span class="n">require</span><span class="p">(</span><span class="n">DMwR</span><span class="p">)</span>
+<span class="n">sdata</span> <span class="o">=</span> <span class="n">cbind</span><span class="p">(</span><span class="n">train_Y</span><span class="p">,</span><span class="n">train_X</span><span class="p">)</span>
+<span class="n">names</span><span class="p">(</span><span class="n">sdata</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="o">&lt;-</span><span class="n">paste</span><span class="p">(</span><span class="s2">"class"</span><span class="p">)</span>
+
+<span class="n">Bal_data_train</span> <span class="o">&lt;-</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">class</span> <span class="o">~</span> <span class="err">.</span><span class="p">,</span> <span class="n">sdata</span><span class="p">,</span> <span class="n">perc.over</span> <span class="o">=</span> <span class="m">500</span><span class="p">,</span><span class="n">perc.under</span><span class="o">=</span><span class="m">110</span><span class="p">)</span>
+<span class="n">table</span><span class="p">(</span><span class="n">Bal_data_train</span><span class="o">$</span><span class="n">class</span><span class="p">)</span>
+<span class="n">qplot</span><span class="p">(</span><span class="n">Bal_data_train</span><span class="o">$</span><span class="n">class</span><span class="p">,</span> <span class="n">geom</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">,</span><span class="n">ylab</span> <span class="o">=</span> <span class="s2">"count"</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s2">"Class Distribution "</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s2">"Class"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">Bal_data_train</span><span class="o">$</span><span class="n">class</span> <span class="p">)</span> 
+
+<span class="n">train_X</span> <span class="o">=</span> <span class="n">Bal_data_train</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="m">65</span><span class="p">]</span>
+<span class="n">train_Y</span> <span class="o">=</span> <span class="n">as.factor</span><span class="p">(</span><span class="n">Bal_data_train</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+</code></pre>
+</div>
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/enb1.png" alt="Ensemble Tree" /></p>
+
+<p>Principle Component Analysis (PCA) is the feature extraction technique that can reduce the dimension space of the data set. This data set has many attributes (more than 60 attributes). After applying PCA, the first feature we extract from the attribute space captures the most variability in the data.</p>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="c1">###################   Feature Extraction     ##############################
+#######    Extract new feature, reduce feture dimention, ############
+#######     comment this part if you don't want #####################
+</span><span class="n">require</span><span class="p">(</span><span class="n">clusterSim</span><span class="p">)</span>
+<span class="n">fdata</span> <span class="o">=</span> <span class="n">cbind</span><span class="p">(</span><span class="n">train_Y</span><span class="p">,</span><span class="n">train_X</span><span class="p">)</span>
+<span class="n">Norm_data_train</span> <span class="o">=</span> <span class="n">data.Normalization</span><span class="p">(</span><span class="n">fdata</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">65</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s2">"n4"</span><span class="p">,</span><span class="n">normalization</span><span class="o">=</span><span class="s2">"column"</span><span class="p">);</span>
+
+<span class="c1">#Apply PCA
+</span><span class="n">data_train.pca</span> <span class="o">&lt;-</span> <span class="n">princomp</span><span class="p">(</span><span class="n">Norm_data_train</span><span class="p">,</span> <span class="n">cor</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">,</span> <span class="n">scale.</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span> 
+<span class="n">plot</span><span class="p">(</span><span class="n">data_train.pca</span><span class="p">)</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">data_train.pca</span><span class="p">)</span>
+
+<span class="n">train_X</span> <span class="o">=</span> <span class="n">data_train.pca</span><span class="o">$</span><span class="n">scores</span><span class="p">[,</span><span class="m">1</span><span class="o">:</span><span class="m">22</span><span class="p">]</span>
+<span class="n">train_Y</span> <span class="o">=</span> <span class="n">as.factor</span><span class="p">(</span><span class="n">Bal_data_train</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span>
+</code></pre>
+</div>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/enb5.png" alt="Ensemble Tree" />
+we then decide to use 22 components to capture at least 95 percent of the variances in the data.</p>
+
+<h2 id="model-fitting">Model Fitting</h2>
+
+<p><strong>Step for model building</strong>
+<img src="http://127.0.0.1:4000/images/posts/content_images/enb2.png" alt="Ensemble Tree" /></p>
+
+<ul>
+  <li>
+    <p>Apply the three data set with Boosting and Bagging modeling techniques.</p>
+  </li>
+  <li>
+    <p>Perform grid search to find the best parameter for each best model.</p>
+  </li>
+  <li>
+    <p>Use 10 folds-cross validation in order to avoid model overfitting</p>
+  </li>
+</ul>
+
+<div class="language-R highlighter-rouge"><pre class="highlight"><code><span class="c1">############################################################
+</span><span class="n">fitControl</span> <span class="o">&lt;-</span> <span class="n">trainControl</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s2">"repeatedcv"</span><span class="p">,</span>
+                           <span class="n">repeats</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+                           <span class="n">number</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+                           <span class="c1">#summaryFunction = multiClassSummary,
+</span>                           <span class="n">summaryFunction</span> <span class="o">=</span> <span class="n">twoClassSummary</span><span class="p">,</span>
+                           <span class="n">savePredictions</span> <span class="o">=</span><span class="n">T</span><span class="p">,</span>
+                           <span class="n">verboseIter</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">,</span>
+                           <span class="c1">## Estimate class probabilities
+</span>                           <span class="n">classProbs</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+
+<span class="c1">#######################################################
+</span>
+<span class="n">fit.rf</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"rf"</span>  <span class="p">,</span> 
+                  <span class="n">tuneLength</span> <span class="o">=</span> <span class="m">5</span><span class="p">,</span>
+                  <span class="n">metric</span><span class="o">=</span><span class="s2">"ROC"</span><span class="p">,</span>
+                  <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.rf</span><span class="p">)</span>
+<span class="n">fit.rf</span>
+
+<span class="n">pred</span> <span class="o">&lt;-</span> <span class="n">predict</span><span class="p">(</span><span class="n">fit.rf</span><span class="p">,</span> <span class="n">train_X</span><span class="p">)</span>
+<span class="n">xtab</span> <span class="o">&lt;-</span> <span class="n">table</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">train_Y</span><span class="p">)</span>
+<span class="n">confusionMatrix</span><span class="p">(</span><span class="n">fit.rf</span><span class="p">)</span>
+
+<span class="c1">#########################################################
+</span>
+<span class="n">fit.ada</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"ada"</span>  <span class="p">,</span> 
+               <span class="n">metric</span><span class="o">=</span><span class="s2">"ROC"</span><span class="p">,</span>
+               <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.ada</span><span class="p">)</span>
+<span class="n">fit.ada</span>
+
+<span class="n">trellis.par.set</span><span class="p">(</span><span class="n">caretTheme</span><span class="p">())</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.ada</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s2">"ROC"</span><span class="p">,</span> <span class="n">plotType</span> <span class="o">=</span> <span class="s2">"level"</span><span class="p">,</span>
+     <span class="n">scales</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="n">rot</span> <span class="o">=</span> <span class="m">90</span><span class="p">)))</span>
+
+<span class="c1">############################################################
+</span>
+<span class="n">fit.treeBag</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"treebag"</span><span class="p">,</span> 
+                    <span class="n">metric</span><span class="o">=</span><span class="s2">"ROC"</span><span class="p">,</span>
+                    <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.treeBag</span><span class="p">)</span>
+<span class="n">fit.treeBag</span>
+
+<span class="c1">###########################################################
+</span><span class="n">fit.LogitBoost</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"LogitBoost"</span><span class="p">,</span> 
+                    <span class="n">metric</span><span class="o">=</span><span class="s2">"ROC"</span><span class="p">,</span>
+                    <span class="n">tuneLength</span> <span class="o">=</span> <span class="m">8</span><span class="p">,</span>
+                    <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.LogitBoost</span><span class="p">)</span>
+<span class="n">fit.LogitBoost</span>
+
+<span class="c1">###########################################################
+</span>
+<span class="n">fit.AdaM1</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"AdaBoost.M1"</span><span class="p">,</span> 
+                       <span class="n">metric</span><span class="o">=</span><span class="s2">"ROC"</span><span class="p">,</span>
+                       <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.AdaM1</span><span class="p">)</span>
+<span class="n">fit.AdaM1</span>
+
+<span class="c1">###########################################################
+</span>
+<span class="n">fit.gbm</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">train_Y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">train_X</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span> <span class="s2">"gbm"</span><span class="p">,</span> 
+                  <span class="n">metric</span><span class="o">=</span><span class="s2">"ROC"</span><span class="p">,</span>
+                  <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.gbm</span><span class="p">)</span>
+<span class="n">fit.gbm</span>
+
+<span class="c1">##########################################################
+</span>
+<span class="n">fit.bagLDA</span> <span class="o">&lt;-</span> <span class="n">train</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_Y</span><span class="p">,</span> 
+                 <span class="s2">"bag"</span><span class="p">,</span> 
+                 <span class="n">B</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span> 
+                 <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">,</span>
+                 <span class="n">bagControl</span> <span class="o">=</span> <span class="n">bagControl</span><span class="p">(</span><span class="n">fit</span> <span class="o">=</span> <span class="n">ldaBag</span><span class="o">$</span><span class="n">fit</span><span class="p">,</span>
+                                         <span class="n">predict</span> <span class="o">=</span> <span class="n">ldaBag</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span>
+                                         <span class="n">aggregate</span> <span class="o">=</span> <span class="n">ldaBag</span><span class="o">$</span><span class="n">aggregate</span><span class="p">),</span>
+                 <span class="n">tuneGrid</span> <span class="o">=</span> <span class="n">data.frame</span><span class="p">(</span><span class="n">vars</span> <span class="o">=</span> <span class="n">c</span><span class="p">((</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="o">*</span><span class="m">10</span> <span class="p">,</span> <span class="n">ncol</span><span class="p">(</span><span class="n">train_X</span><span class="p">))))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fit.bagLDA</span><span class="p">)</span>
+<span class="n">fit.bagLDA</span>
+
+
+<span class="c1">################Perf #######################################
+</span>
+<span class="n">resamps</span> <span class="o">&lt;-</span> <span class="n">resamples</span><span class="p">(</span><span class="n">list</span><span class="p">(</span><span class="n">RF</span> <span class="o">=</span> <span class="n">fit.rf</span><span class="p">,</span>
+                          <span class="n">BoostedTree</span> <span class="o">=</span> <span class="n">fit.ada</span><span class="p">,</span>
+                          <span class="n">BaggedCart</span> <span class="o">=</span> <span class="n">fit.treeBag</span><span class="p">,</span>
+                          <span class="n">LogitBoost</span><span class="o">=</span> <span class="n">fit.LogitBoost</span><span class="p">,</span>
+                          <span class="n">BaggedLDA</span> <span class="o">=</span> <span class="n">fit.bagLDA</span><span class="p">,</span>
+                          <span class="n">GBM</span> <span class="o">=</span> <span class="n">fit.gbm</span>
+                          <span class="p">))</span>
+<span class="n">resamps</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">resamps</span><span class="p">)</span>
+<span class="n">bwplot</span><span class="p">(</span><span class="n">resamps</span><span class="p">,</span> <span class="n">layout</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">1</span><span class="p">))</span>
+</code></pre>
+</div>
+
+<h2 id="experimental-results">Experimental Results</h2>
+<p>Grid Search has been performed to find the best parameters for each model and this plot just shows an example of how the models performed with different parameters 
+<img src="http://127.0.0.1:4000/images/posts/content_images/enb3.png" alt="Ensemble Tree" /></p>
+
+<h2 id="performance-evaluation">Performance Evaluation</h2>
+
+<p>Having fitted all models on each data set, we can see the the Random Forest has the best overall performance, even though the Boosted tree perform better in only imbalanced data. The second best model so far is Bagged Cart (Bagged Tree) model on both balanced and PCA data set, and Random Forest for the unbalanced data.</p>
+
+<p><img src="http://127.0.0.1:4000/images/posts/content_images/enb4.png" alt="Ensemble Tree" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Based on this data set, we can conclude for these findings that Bagging is more outperformed than Boosting techniques on binary class variables, but Boosting might perform best on unbalanced data. Even though Kristína Machová found Boosting has higher performance in her work, it makes sense to us that we found Bagging has higher performance on this certain data because cross validation is used in experiment making our samples become small which fit very well in Bagging models. Within boosting technique, boosted tree perform the best across all different data. For the bagging, Random Forest perform the best among other bagging techniques (Bagged Tree and Bagged LDA).</p>
+
+
+          <div class="post__tags">
+            
+          </div>
+        </div>
+
+        <hr>
+
+        
+
+        <ul class="share-list">
+  <li>
+    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Ensemble Classifier - Machine Learning&url=127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
+      <div data-icon="ei-sc-twitter" data-size="s" class="share-list__icon share-list__icon--twitter"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://facebook.com/sharer.php?u=127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <div data-icon="ei-sc-facebook" data-size="s" class="share-list__icon share-list__icon--facebook"></div>
+    </a>
+  </li>
+  <li>
+    <a class="share-list__link" href="https://plus.google.com/share?url=127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/" rel="nofollow" target="_blank" title="Share on Google+">
+    <div data-icon="ei-sc-google-plus" data-size="s" class="share-list__icon share-list__icon--google"></div>
+    </a>
+  </li>
+</ul>
+
+        <h5 class="separator">
+  <span class="separator__title">Newsletter</span>
+</h5>
+
+<div class="box box--news-letter">
+  <form action="//aspirethemes.us12.list-manage.com/subscribe/post?u=9723f3c5c3a2637fbba3bc673&amp;id=7b50db9989" method="post" target="_blank">
+    <div class="row">
+      <div class="column medium-9 large-9">
+        <input type="email" name="EMAIL" placeholder="Your email address">
+      </div>
+      <div class="column medium-3 large-3">
+        <input type="submit" class="button button--expand" value="SIGN UP">
+      </div>
+    </div>
+  </form>
+</div>
+
+        <section class="disqus">
+  <h5 class="separator">
+    <span class="separator__title">Comments</span>
+  </h5>
+  <div id="disqus_thread"></div>
+
+<script>
+  var disqus_config = function () {
+    this.page.url = "127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/";
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+
+    s.src = '//aspirethemes.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</section>
+      </article>
+    </div>
+
+  </div> <!-- row-->
+</div> <!-- wrapper -->
+  </div>
+
+  <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+  <script type="text/javascript" src="/js/jquery.ghostHunter.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
+</html>
