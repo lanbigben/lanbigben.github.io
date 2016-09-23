@@ -78,14 +78,14 @@ train_X = data_train.pca$scores[,1:22]
 train_Y = as.factor(Bal_data_train[,1])
 ```
 
-![Ensemble Tree](http://{{ site.url }}/images/posts/content_images/enb5.png)
+![Ensemble Tree]({{ site.url }}/images/posts/content_images/enb5.png)
 we then decide to use 22 components to capture at least 95 percent of the variances in the data. 
 
 
 ## Model Fitting
 
 **Step for model building**
-![Ensemble Tree](http://{{ site.url }}/images/posts/content_images/enb2.png)
+![Ensemble Tree]({{ site.url }}/images/posts/content_images/enb2.png)
 
 * Apply the three data set with Boosting and Bagging modeling techniques.
 
@@ -192,13 +192,13 @@ bwplot(resamps, layout = c(5, 1))
 
 ## Experimental Results
 Grid Search has been performed to find the best parameters for each model and this plot just shows an example of how the models performed with different parameters 
-![Ensemble Tree](http://{{ site.url }}/images/posts/content_images/enb3.png)
+![Ensemble Tree]({{ site.url }}/images/posts/content_images/enb3.png)
 
 ## Performance Evaluation 
 
 Having fitted all models on each data set, we can see the the Random Forest has the best overall performance, even though the Boosted tree perform better in only imbalanced data. The second best model so far is Bagged Cart (Bagged Tree) model on both balanced and PCA data set, and Random Forest for the unbalanced data. 
 
-![Ensemble Tree](http://{{ site.url }}/images/posts/content_images/enb4.png)
+![Ensemble Tree]({{ site.url }}/images/posts/content_images/enb4.png)
 
 ## Conclusion
 Based on this data set, we can conclude for these findings that Bagging is more outperformed than Boosting techniques on binary class variables, but Boosting might perform best on unbalanced data. Even though Kristína Machová found Boosting has higher performance in her work, it makes sense to us that we found Bagging has higher performance on this certain data because cross validation is used in experiment making our samples become small which fit very well in Bagging models. Within boosting technique, boosted tree perform the best across all different data. For the bagging, Random Forest perform the best among other bagging techniques (Bagged Tree and Bagged LDA).

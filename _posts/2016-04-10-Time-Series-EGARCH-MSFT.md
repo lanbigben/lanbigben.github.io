@@ -22,7 +22,7 @@ pricets = zoo(myd_lim$Adj.Close, as.Date(as.character(myd_lim$Date),format=c("%Y
 autoplot(pricets)
 
 ```
-![MSFT Time Series](http://{{ site.url }}/images/posts/content_images/timeseries.png)
+![MSFT Time Series]({{ site.url }}/images/posts/content_images/timeseries.png)
 
 Originally, we took the data set from the IPO (Initial Public Offering) date of March 13, 1986. However, there was too much of trend since the stock has split many times. With this in mind, we decided to start to our data set in February of 1998. As you can see there is a steep run up during the dot com bubble of the late 1990’s and early 2000. The tech bubble peaked on March 10, 2000. Next there was a steep drop, and then the stock hung around 20 for years. Then during the Mortgage crisis the stock dropped down into the teens, bottoming in 2009. Since the company made Satya Nadella the CEO, the stock has had a nice rally up to the volatility of early 2016.
 
@@ -49,11 +49,11 @@ basicStats(rets)
 autoplot(rets)
 
 ```
-![MSFT Time Series](http://{{ site.url }}/images/posts/content_images/logret.png)
+![MSFT Time Series]({{ site.url }}/images/posts/content_images/logret.png)
 
 The ACF plot(below) of the squared log returns of MSFT decays very slowly. The lags are all much larger than 2 standard deviations. This confirms large autocorrelations in the squared log returns. Therefore we can conclude that the log returns process has a strong non-linear dependence.
 
-![MSFT Time Series](http://{{ site.url }}/images/posts/content_images/archeffect.png)
+![MSFT Time Series]({{ site.url }}/images/posts/content_images/archeffect.png)
 
 
 Since we have confirmed serial correlation in the conditional variance of the process, we can say that the conditional variance of the process at time t is a function of the variance at previous times. Therefore we can use the past to explain or predict the current variance. This enables us to use GARCH model to model the variance of the MSFT stock price time series.
@@ -147,7 +147,7 @@ The p-values > .05 . Therefore we can’t reject the hypothesis that the selecte
 
 T-distribution probability plot(left) for residuals show that t-distribution is appropriate. Some departure is seen under the left tail for extreme residuals (associated to extremely low returns)
 
-![MSFT Time Series](http://{{ site.url }}/images/posts/content_images/std-qqplot.png)
+![MSFT Time Series]({{ site.url }}/images/posts/content_images/std-qqplot.png)
 
 ## Residual analysis and model diagnostics
 
@@ -188,13 +188,13 @@ The plot on the left below shows the volatility of the MSFT stock return with 2 
 
 The News Impact Curve(below right) reiterates the fact that in our model the leverage effect is significant and that the volatility of our data set reacts more strongly to  negative shocks than to positive shocks. You can see by looking at the graph that the magnitude of the volatility skyrockets as the shocks are more negative.
 
-![MSFT Time Series](http://{{ site.url }}/images/posts/content_images/residual.png)
+![MSFT Time Series]({{ site.url }}/images/posts/content_images/residual.png)
 
 
 ## Forecast analysis
 Based on the analysis, EGARCH(1,1) model for variance and t-distribution turned out to be the best model BIC supports using the EGARCH model better than the GARCH model and TGARCH model. Forecasts are computed using the ugarchforecast function for the next 12-step ahead. The plot of the forecast unconditional sigma shows that the stock volatility will slightly decrease in the next 12-step ahead. 
 
-![MSFT Time Series](http://{{ site.url }}/images/posts/content_images/forecast.png)
+![MSFT Time Series]({{ site.url }}/images/posts/content_images/forecast.png)
 
 ## Sum up
 

@@ -15,7 +15,7 @@ This visualization was run in R, Tableau and D3. [Link to Github](https://github
 
 ## Sale Trends
 
-![Sale Trend Heat Map](http://{{ site.url }}/images/posts/content_images/viz1.png)
+![Sale Trend Heat Map]({{ site.url }}/images/posts/content_images/viz1.png)
 
 A calendar heat map is a graphical representation that can visualize values over days in a calendar. Moreover, using this heat map allowed us to see the overall pattern in the data set. In this graph, our group used red color to represent the days that had a high sales value, and used blue to represent the days that had a low sales value. 
 
@@ -35,7 +35,7 @@ A calendar heat map is a graphical representation that can visualize values over
 
 ## Department and Product Buying Associations
 
-![Network Graph](http://{{ site.url }}/images/posts/content_images/viz2.png)
+![Network Graph]({{ site.url }}/images/posts/content_images/viz2.png)
 
 Network graphs revealed the relationships between different departments and product categories. With this plot, we used lines with direction, and combined the thickness of lines to represent relationships between collections of data (departments/products) that related to buyers’ habits.
 
@@ -60,7 +60,7 @@ Network graphs revealed the relationships between different departments and prod
 * Customers could be segmented by age, with a separate network graph for each. This would enable us to see if buying habits change with age.
 
 
-![Chord Diagram](http://{{ site.url }}/images/posts/content_images/viz3.png)
+![Chord Diagram]({{ site.url }}/images/posts/content_images/viz3.png)
 
 We used chord diagram as an alternative beyond network graph to display inter-relationships among the products in the grocery data set. Each product is divided and represented on the edge of a circle with different colors. This chord diagram was developed by D3. One important advantage of using D3 is that it is an interactive webpage. It also allows you to hover the mouse over the products to show the inter-relationship of each product. Coffee for example, you will see multiple lines with different colors and thickness clearly show the relationships between coffee and another product.
 
@@ -83,7 +83,7 @@ People who have a baby are more likely to buy baby foods with beers/ ales and co
 
 This tree map sought to explore the customer age and what type of products that customs were more likely to purchase at the store. This graph can help the store target their customers more effectively. Size shows sum of sales value.  Color shows the number of coupons applied to the product departments. The marks are labeled by customers age and product departments. 
 
-![Chord Diagram](http://{{ site.url }}/images/posts/content_images/viz4.png)
-![Chord Diagram](http://{{ site.url }}/images/posts/content_images/viz5.png)
+![Chord Diagram]({{ site.url }}/images/posts/content_images/viz4.png)
+![Chord Diagram]({{ site.url }}/images/posts/content_images/viz5.png)
 
 

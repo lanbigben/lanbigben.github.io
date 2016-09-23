@@ -35,12 +35,12 @@ qplot(df.onNews$dataChannel, geom="histogram",ylab = "count",binwidth = 30,
 qplot(df.onNews$pubDay, geom="histogram",ylab = "count",binwidth = 30,
       main = "Histogram for publication day", xlab = "Day", fill=df.onNews$share2bins ) 
 ```
-![Decision Tree](http://{{ site.url }}/images/posts/content_images/pvn4.png)
+![Decision Tree]({{ site.url }}/images/posts/content_images/pvn4.png)
 
 Most positive cases (high popularity) are captured in Lifestyle, social and tech channel. These channels seem to be much popular than business, entertainment and word channel. For example, Social channel had 76 percent of positive cases (high popularity) and technology channel had 64 percent of positive cases. 
 
 
-![Decision Tree](http://{{ site.url }}/images/posts/content_images/pvn5.png)
+![Decision Tree]({{ site.url }}/images/posts/content_images/pvn5.png)
 
 In reviewing positive cases (high popularity) on the publication day, most news shared on weekend seems to be in the “high popularity” group. About 75 percent of the news published on Sunday was popular. The news published on weekday tent to be in “low popularity” group. For example, the majority of the news shared on Wednesday and Tuesday were unpopular.
 
@@ -92,7 +92,7 @@ fancyRpartPlot(fit.rpart8$finalModel)
 ```
 The visualization below shows the tree structure and the branches of tree. The most important five OnlineNewsPopularity data features are kw_avg_avg, data channel entertainment, data channel tech, is_weekend and dataChanelSocial. These features are on the top of the decision tree and they have the most important power to separate the classes.
 
-![Decision Tree](http://{{ site.url }}/images/posts/content_images/pvn1.png)
+![Decision Tree]({{ site.url }}/images/posts/content_images/pvn1.png)
 
 
 **Naïve Bayes Analysis**
@@ -147,14 +147,14 @@ Tuning parameter 'mtry' was held constant at a value of 4
 ```
 The visualization below reveals the important variables used in splitting nodes down the tree.  For example, the most important Online News Popularity dataset features are Is_weekend, Kw_avg_avg, Datachanel and Self_reference variables. Most important features from a random forest analysis are about the same with decision tree analysis. 
 
-![Random Forest](http://{{ site.url }}/images/posts/content_images/pvn2.png)
+![Random Forest]({{ site.url }}/images/posts/content_images/pvn2.png)
 
 
 
 ## Performance Evaluation
 As a result, Naïve Bayes does not work very well with the dataset. Decision tree is one the useful modeling technique since this technique is easy to interpret and understand the result. Moreover, random forest analysis is the best modeling technique with the dataset because it gets the highest accuracy in both training and testing dataset.
 
-![Performance comparision](http://{{ site.url }}/images/posts/content_images/pvn3.png)
+![Performance comparision]({{ site.url }}/images/posts/content_images/pvn3.png)
 
 For recommendation and future action, there are some outliers in the variables and these outliers may impact on the accuracy of the predictive models. 
 

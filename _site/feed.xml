@@ -3,10 +3,10 @@
   <channel>
     <title>Lanbig</title>
     <description>In the world of Machine Leaning</description>
-    <link>127.0.0.1:4000/</link>
-    <atom:link href="127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Sep 2016 12:27:28 -0500</pubDate>
-    <lastBuildDate>Fri, 23 Sep 2016 12:27:28 -0500</lastBuildDate>
+    <link>http://127.0.0.1:4000/</link>
+    <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 23 Sep 2016 13:48:59 -0500</pubDate>
+    <lastBuildDate>Fri, 23 Sep 2016 13:48:59 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -17,7 +17,9 @@
 &lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/linear-fit.png&quot; alt=&quot;Scatter plot and linear line&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In this part, I will fit the linear regression parameters θ to our dataset using gradient descent.&lt;/p&gt;
-
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x^y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 &lt;p&gt;For population = 35,000, we predict a profit of 4519.767868
 For population = 70,000, we predict a profit of 45342.450129&lt;/p&gt;
 
@@ -30,8 +32,8 @@ For population = 70,000, we predict a profit of 45342.450129&lt;/p&gt;
 &lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/linear-cost-function2.png&quot; alt=&quot;Contour plot&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 10 Sep 2016 00:00:00 -0500</pubDate>
-        <link>127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/</link>
-        <guid isPermaLink="true">127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/</guid>
+        <link>http://127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/</guid>
         
         
       </item>
@@ -90,7 +92,7 @@ For population = 70,000, we predict a profit of 45342.450129&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;train_Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;as.factor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bal_data_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/enb1.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://http://127.0.0.1:4000/images/posts/content_images/enb1.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Principle Component Analysis (PCA) is the feature extraction technique that can reduce the dimension space of the data set. This data set has many attributes (more than 60 attributes). After applying PCA, the first feature we extract from the attribute space captures the most variability in the data.&lt;/p&gt;
 
@@ -243,8 +245,8 @@ we then decide to use 22 components to capture at least 95 percent of the varian
 
 </description>
         <pubDate>Tue, 10 May 2016 00:00:00 -0500</pubDate>
-        <link>127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/</link>
-        <guid isPermaLink="true">127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/</guid>
+        <link>http://127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/</guid>
         
         
       </item>
@@ -463,8 +465,8 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
 
 </description>
         <pubDate>Sun, 10 Apr 2016 00:00:00 -0500</pubDate>
-        <link>127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/</link>
-        <guid isPermaLink="true">127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/</guid>
+        <link>http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/</guid>
         
         
       </item>
@@ -579,8 +581,8 @@ People who have a baby are more likely to buy baby foods with beers/ ales and co
 
 </description>
         <pubDate>Tue, 15 Mar 2016 00:00:00 -0500</pubDate>
-        <link>127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/</link>
-        <guid isPermaLink="true">127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/</guid>
+        <link>http://127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/</guid>
         
         
       </item>
@@ -738,8 +740,8 @@ fancyRpartPlot(fit.rpart8$finalModel)
 
 </description>
         <pubDate>Thu, 10 Mar 2016 00:00:00 -0600</pubDate>
-        <link>127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/</link>
-        <guid isPermaLink="true">127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/</guid>
+        <link>http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/</guid>
         
         
       </item>
@@ -787,8 +789,8 @@ fancyRpartPlot(fit.rpart8$finalModel)
 &lt;p&gt;There are many benefits of using caret package. Check this link:&lt;a href=&quot;http://topepo.github.io/caret/index.html&quot;&gt;http://topepo.github.io/caret/index.html&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 00:00:00 -0600</pubDate>
-        <link>127.0.0.1:4000/2015/12/20/Useful-Features-From-Caret-package-in-R/</link>
-        <guid isPermaLink="true">127.0.0.1:4000/2015/12/20/Useful-Features-From-Caret-package-in-R/</guid>
+        <link>http://127.0.0.1:4000/2015/12/20/Useful-Features-From-Caret-package-in-R/</link>
+        <guid isPermaLink="true">http://127.0.0.1:4000/2015/12/20/Useful-Features-From-Caret-package-in-R/</guid>
         
         
       </item>

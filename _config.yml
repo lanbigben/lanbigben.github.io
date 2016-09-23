@@ -10,7 +10,7 @@ title: Lanbig
 email: lanbig@msn.com
 description: In the world of Machine Leaning 
 baseurl: '' # the subpath of your site, e.g. /blog
-url: '127.0.0.1:4000' # the base hostname & protocol for your site
+url: 'http://127.0.0.1:4000' # the base hostname & protocol for your site
 twitter_username: 
 github_username: lanbig
 linkedin_username: lanbig
@@ -36,12 +36,12 @@ tag_page_dir: tag
 tag_permalink_style: pretty
 
 authors:
-  john:
-    name: John Adam
-    display_name: John Adam
+  ben:
+    name: Ben
+    display_name: Ben Rodrawangpai
     bio: Ben has over 3 years of experience as a web writer, and also a photographer.
     gravatar: http://east.aspirethemes.com/content/images/2016/01/smiles-man.jpg
-    email: john@aspirethemes.com
-    web: http://aspirethemes.com
-    twitter: aspirethemes
-    github: aspirethemes
+    email: lanbig@msn.com
+    web: 
+    twitter: lanbig
+    github: lanbig
