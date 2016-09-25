@@ -2,7 +2,6 @@
 layout: post
 title: Linear Regression and Cost function
 image: "/images/posts/feature_images/linear-cost-function.png"
-featured: true
 author: ben
 ---
 

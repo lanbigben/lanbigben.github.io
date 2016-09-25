@@ -10,7 +10,7 @@ title: Lanbig
 email: lanbig@msn.com
 description: In the world of Machine Leaning 
 baseurl: '' # the subpath of your site, e.g. /blog
-url: 'http://lanbigben.github.io' # the base hostname & protocol for your site
+url: 'lanbigben.github.io' # the base hostname & protocol for your site
 twitter_username: 
 github_username: lanbig
 linkedin_username: lanbig
@@ -40,7 +40,7 @@ authors:
     name: Ben
     display_name: Ben Rodrawangpai
     bio: Ben has over 3 years of experience as a web writer, and also a photographer.
-    gravatar: http://east.aspirethemes.com/content/images/2016/01/smiles-man.jpg
+    gravatar: https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAATOAAAAJGU3ZGE5YjZkLWYyNWEtNDUyMi04OWI5LTY4N2E5ODNkYTgxMg.jpg
     email: lanbig@msn.com
     web: 
     twitter: lanbig

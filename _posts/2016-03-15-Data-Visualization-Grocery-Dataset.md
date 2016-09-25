@@ -2,6 +2,7 @@
 layout: post
 title: Using R, Tableau and D3 to visualization Grocery sales and Marketing data set
 image: "/images/posts/feature_images/fruits-market-colors.jpg"
+author: ben
 ---
 
 Data science company Dunnhumby released a dataset called “The Complete Journey” that provided the data for our exploration. “The Complete Journey” provides a comprehensive look at grocery sales and marketing over a 2-year period. 

@@ -2,6 +2,7 @@
 layout: post
 title: Useful features from CARET package in R
 image: "/images/posts/feature_images/useful.jpg"
+author: ben
 ---
 
 

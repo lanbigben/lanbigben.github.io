@@ -3,10 +3,10 @@
   <channel>
     <title>Lanbig</title>
     <description>In the world of Machine Leaning</description>
-    <link>http://127.0.0.1:4000/</link>
-    <atom:link href="http://127.0.0.1:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Sep 2016 20:47:09 -0500</pubDate>
-    <lastBuildDate>Fri, 23 Sep 2016 20:47:09 -0500</lastBuildDate>
+    <link>http://lanbigben.github.io/</link>
+    <atom:link href="http://lanbigben.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 25 Sep 2016 06:07:27 -0500</pubDate>
+    <lastBuildDate>Sun, 25 Sep 2016 06:07:27 -0500</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -14,7 +14,7 @@
         <description>&lt;p&gt;In this part of this exercise, I will implement linear regression with one variable to predict profits for a food truck.&lt;/p&gt;
 
 &lt;p&gt;The first figure shows the scatter plot of profit and population in the city. 
-&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/linear-fit.png&quot; alt=&quot;Scatter plot and linear line&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/linear-fit.png&quot; alt=&quot;Scatter plot and linear line&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In this part, I will fit the linear regression parameters θ to our dataset using gradient descent.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;x^y
@@ -28,12 +28,12 @@ For population = 70,000, we predict a profit of 45342.450129&lt;/p&gt;
 &lt;p&gt;Surface plot&lt;/p&gt;
 
 &lt;p&gt;Contour plot
-&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/linear-cost-function.png&quot; alt=&quot;Surface plot&quot; /&gt;
-&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/linear-cost-function2.png&quot; alt=&quot;Contour plot&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/linear-cost-function.png&quot; alt=&quot;Surface plot&quot; /&gt;
+&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/linear-cost-function2.png&quot; alt=&quot;Contour plot&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 10 Sep 2016 00:00:00 -0500</pubDate>
-        <link>http://127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/09/10/Linear-Regression-Machine-Learning/</guid>
+        <link>http://lanbigben.github.io/2016/09/10/Linear-Regression-Machine-Learning/</link>
+        <guid isPermaLink="true">http://lanbigben.github.io/2016/09/10/Linear-Regression-Machine-Learning/</guid>
         
         
       </item>
@@ -92,7 +92,7 @@ For population = 70,000, we predict a profit of 45342.450129&lt;/p&gt;
 &lt;span class=&quot;n&quot;&gt;train_Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;as.factor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Bal_data_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://http://127.0.0.1:4000/images/posts/content_images/enb1.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/enb1.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Principle Component Analysis (PCA) is the feature extraction technique that can reduce the dimension space of the data set. This data set has many attributes (more than 60 attributes). After applying PCA, the first feature we extract from the attribute space captures the most variability in the data.&lt;/p&gt;
 
@@ -113,13 +113,13 @@ For population = 70,000, we predict a profit of 45342.450129&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/enb5.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/enb5.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;
 we then decide to use 22 components to capture at least 95 percent of the variances in the data.&lt;/p&gt;
 
 &lt;h2 id=&quot;model-fitting&quot;&gt;Model Fitting&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;Step for model building&lt;/strong&gt;
-&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/enb2.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/enb2.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -232,21 +232,21 @@ we then decide to use 22 components to capture at least 95 percent of the varian
 
 &lt;h2 id=&quot;experimental-results&quot;&gt;Experimental Results&lt;/h2&gt;
 &lt;p&gt;Grid Search has been performed to find the best parameters for each model and this plot just shows an example of how the models performed with different parameters 
-&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/enb3.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/enb3.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;performance-evaluation&quot;&gt;Performance Evaluation&lt;/h2&gt;
 
 &lt;p&gt;Having fitted all models on each data set, we can see the the Random Forest has the best overall performance, even though the Boosted tree perform better in only imbalanced data. The second best model so far is Bagged Cart (Bagged Tree) model on both balanced and PCA data set, and Random Forest for the unbalanced data.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/enb4.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/enb4.png&quot; alt=&quot;Ensemble Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 &lt;p&gt;Based on this data set, we can conclude for these findings that Bagging is more outperformed than Boosting techniques on binary class variables, but Boosting might perform best on unbalanced data. Even though Kristína Machová found Boosting has higher performance in her work, it makes sense to us that we found Bagging has higher performance on this certain data because cross validation is used in experiment making our samples become small which fit very well in Bagging models. Within boosting technique, boosted tree perform the best across all different data. For the bagging, Random Forest perform the best among other bagging techniques (Bagged Tree and Bagged LDA).&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 10 May 2016 00:00:00 -0500</pubDate>
-        <link>http://127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/05/10/Ensemble-Classifier-Machine-Learning/</guid>
+        <link>http://lanbigben.github.io/2016/05/10/Ensemble-Classifier-Machine-Learning/</link>
+        <guid isPermaLink="true">http://lanbigben.github.io/2016/05/10/Ensemble-Classifier-Machine-Learning/</guid>
         
         
       </item>
@@ -271,7 +271,7 @@ we then decide to use 22 components to capture at least 95 percent of the varian
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/timeseries.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/timeseries.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Originally, we took the data set from the IPO (Initial Public Offering) date of March 13, 1986. However, there was too much of trend since the stock has split many times. With this in mind, we decided to start to our data set in February of 1998. As you can see there is a steep run up during the dot com bubble of the late 1990’s and early 2000. The tech bubble peaked on March 10, 2000. Next there was a steep drop, and then the stock hung around 20 for years. Then during the Mortgage crisis the stock dropped down into the teens, bottoming in 2009. Since the company made Satya Nadella the CEO, the stock has had a nice rally up to the volatility of early 2016.&lt;/p&gt;
 
@@ -297,11 +297,11 @@ we then decide to use 22 components to capture at least 95 percent of the varian
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/logret.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/logret.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The ACF plot(below) of the squared log returns of MSFT decays very slowly. The lags are all much larger than 2 standard deviations. This confirms large autocorrelations in the squared log returns. Therefore we can conclude that the log returns process has a strong non-linear dependence.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/archeffect.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/archeffect.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Since we have confirmed serial correlation in the conditional variance of the process, we can say that the conditional variance of the process at time t is a function of the variance at previous times. Therefore we can use the past to explain or predict the current variance. This enables us to use GARCH model to model the variance of the MSFT stock price time series.&lt;/p&gt;
 
@@ -405,7 +405,7 @@ The p-values &amp;gt; .05 . Therefore we can’t reject the hypothesis that the 
 
 &lt;p&gt;T-distribution probability plot(left) for residuals show that t-distribution is appropriate. Some departure is seen under the left tail for extreme residuals (associated to extremely low returns)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/std-qqplot.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/std-qqplot.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;residual-analysis-and-model-diagnostics&quot;&gt;Residual analysis and model diagnostics&lt;/h2&gt;
 
@@ -450,12 +450,12 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
 
 &lt;p&gt;The News Impact Curve(below right) reiterates the fact that in our model the leverage effect is significant and that the volatility of our data set reacts more strongly to  negative shocks than to positive shocks. You can see by looking at the graph that the magnitude of the volatility skyrockets as the shocks are more negative.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/residual.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/residual.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;forecast-analysis&quot;&gt;Forecast analysis&lt;/h2&gt;
 &lt;p&gt;Based on the analysis, EGARCH(1,1) model for variance and t-distribution turned out to be the best model BIC supports using the EGARCH model better than the GARCH model and TGARCH model. Forecasts are computed using the ugarchforecast function for the next 12-step ahead. The plot of the forecast unconditional sigma shows that the stock volatility will slightly decrease in the next 12-step ahead.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/forecast.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/forecast.png&quot; alt=&quot;MSFT Time Series&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;sum-up&quot;&gt;Sum up&lt;/h2&gt;
 
@@ -465,8 +465,8 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
 
 </description>
         <pubDate>Sun, 10 Apr 2016 00:00:00 -0500</pubDate>
-        <link>http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/</guid>
+        <link>http://lanbigben.github.io/2016/04/10/Time-Series-EGARCH-MSFT/</link>
+        <guid isPermaLink="true">http://lanbigben.github.io/2016/04/10/Time-Series-EGARCH-MSFT/</guid>
         
         
       </item>
@@ -483,7 +483,7 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
 
 &lt;h2 id=&quot;sale-trends&quot;&gt;Sale Trends&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/viz1.png&quot; alt=&quot;Sale Trend Heat Map&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/viz1.png&quot; alt=&quot;Sale Trend Heat Map&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;A calendar heat map is a graphical representation that can visualize values over days in a calendar. Moreover, using this heat map allowed us to see the overall pattern in the data set. In this graph, our group used red color to represent the days that had a high sales value, and used blue to represent the days that had a low sales value.&lt;/p&gt;
 
@@ -507,7 +507,7 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
 
 &lt;h2 id=&quot;department-and-product-buying-associations&quot;&gt;Department and Product Buying Associations&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/viz2.png&quot; alt=&quot;Network Graph&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/viz2.png&quot; alt=&quot;Network Graph&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Network graphs revealed the relationships between different departments and product categories. With this plot, we used lines with direction, and combined the thickness of lines to represent relationships between collections of data (departments/products) that related to buyers’ habits.&lt;/p&gt;
 
@@ -547,7 +547,7 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/viz3.png&quot; alt=&quot;Chord Diagram&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/viz3.png&quot; alt=&quot;Chord Diagram&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We used chord diagram as an alternative beyond network graph to display inter-relationships among the products in the grocery data set. Each product is divided and represented on the edge of a circle with different colors. This chord diagram was developed by D3. One important advantage of using D3 is that it is an interactive webpage. It also allows you to hover the mouse over the products to show the inter-relationship of each product. Coffee for example, you will see multiple lines with different colors and thickness clearly show the relationships between coffee and another product.&lt;/p&gt;
 
@@ -576,13 +576,13 @@ People who have a baby are more likely to buy baby foods with beers/ ales and co
 
 &lt;p&gt;This tree map sought to explore the customer age and what type of products that customs were more likely to purchase at the store. This graph can help the store target their customers more effectively. Size shows sum of sales value.  Color shows the number of coupons applied to the product departments. The marks are labeled by customers age and product departments.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/viz4.png&quot; alt=&quot;Chord Diagram&quot; /&gt;
-&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/viz5.png&quot; alt=&quot;Chord Diagram&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/viz4.png&quot; alt=&quot;Chord Diagram&quot; /&gt;
+&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/viz5.png&quot; alt=&quot;Chord Diagram&quot; /&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Tue, 15 Mar 2016 00:00:00 -0500</pubDate>
-        <link>http://127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/15/Data-Visualization-Grocery-Dataset/</guid>
+        <link>http://lanbigben.github.io/2016/03/15/Data-Visualization-Grocery-Dataset/</link>
+        <guid isPermaLink="true">http://lanbigben.github.io/2016/03/15/Data-Visualization-Grocery-Dataset/</guid>
         
         
       </item>
@@ -621,11 +621,11 @@ People who have a baby are more likely to buy baby foods with beers/ ales and co
       &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Histogram for publication day&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xlab&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Day&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df.onNews&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;share2bins&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/pvn4.png&quot; alt=&quot;Decision Tree&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/pvn4.png&quot; alt=&quot;Decision Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Most positive cases (high popularity) are captured in Lifestyle, social and tech channel. These channels seem to be much popular than business, entertainment and word channel. For example, Social channel had 76 percent of positive cases (high popularity) and technology channel had 64 percent of positive cases.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/pvn5.png&quot; alt=&quot;Decision Tree&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/pvn5.png&quot; alt=&quot;Decision Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In reviewing positive cases (high popularity) on the publication day, most news shared on weekend seems to be in the “high popularity” group. About 75 percent of the news published on Sunday was popular. The news published on weekday tent to be in “low popularity” group. For example, the majority of the news shared on Wednesday and Tuesday were unpopular.&lt;/p&gt;
 
@@ -675,7 +675,7 @@ fancyRpartPlot(fit.rpart8$finalModel)
 &lt;/div&gt;
 &lt;p&gt;The visualization below shows the tree structure and the branches of tree. The most important five OnlineNewsPopularity data features are kw_avg_avg, data channel entertainment, data channel tech, is_weekend and dataChanelSocial. These features are on the top of the decision tree and they have the most important power to separate the classes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/pvn1.png&quot; alt=&quot;Decision Tree&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/pvn1.png&quot; alt=&quot;Decision Tree&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Naïve Bayes Analysis&lt;/strong&gt;&lt;/p&gt;
 
@@ -729,19 +729,19 @@ fancyRpartPlot(fit.rpart8$finalModel)
 &lt;/div&gt;
 &lt;p&gt;The visualization below reveals the important variables used in splitting nodes down the tree.  For example, the most important Online News Popularity dataset features are Is_weekend, Kw_avg_avg, Datachanel and Self_reference variables. Most important features from a random forest analysis are about the same with decision tree analysis.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/pvn2.png&quot; alt=&quot;Random Forest&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/pvn2.png&quot; alt=&quot;Random Forest&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;performance-evaluation&quot;&gt;Performance Evaluation&lt;/h2&gt;
 &lt;p&gt;As a result, Naïve Bayes does not work very well with the dataset. Decision tree is one the useful modeling technique since this technique is easy to interpret and understand the result. Moreover, random forest analysis is the best modeling technique with the dataset because it gets the highest accuracy in both training and testing dataset.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://127.0.0.1:4000/images/posts/content_images/pvn3.png&quot; alt=&quot;Performance comparision&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://lanbigben.github.io/images/posts/content_images/pvn3.png&quot; alt=&quot;Performance comparision&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;For recommendation and future action, there are some outliers in the variables and these outliers may impact on the accuracy of the predictive models.&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 10 Mar 2016 00:00:00 -0600</pubDate>
-        <link>http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/</guid>
+        <link>http://lanbigben.github.io/2016/03/10/Predict-Online-News-Popularity/</link>
+        <guid isPermaLink="true">http://lanbigben.github.io/2016/03/10/Predict-Online-News-Popularity/</guid>
         
         
       </item>
@@ -789,8 +789,8 @@ fancyRpartPlot(fit.rpart8$finalModel)
 &lt;p&gt;There are many benefits of using caret package. Check this link:&lt;a href=&quot;http://topepo.github.io/caret/index.html&quot;&gt;http://topepo.github.io/caret/index.html&lt;/a&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 20 Dec 2015 00:00:00 -0600</pubDate>
-        <link>http://127.0.0.1:4000/2015/12/20/Useful-Features-From-Caret-package-in-R/</link>
-        <guid isPermaLink="true">http://127.0.0.1:4000/2015/12/20/Useful-Features-From-Caret-package-in-R/</guid>
+        <link>http://lanbigben.github.io/2015/12/20/Useful-Features-From-Caret-package-in-R/</link>
+        <guid isPermaLink="true">http://lanbigben.github.io/2015/12/20/Useful-Features-From-Caret-package-in-R/</guid>
         
         
       </item>

@@ -572,7 +572,7 @@ pre {
   margin-top: 0;
   margin-bottom: 32px;
   padding: 32px;
-  font-size: 10px;
+  font-size: 16px;
   white-space: pre-wrap;
   word-wrap: break-word; }
   @media only screen and (max-width: 40em) {
@@ -1590,3 +1590,23 @@ textarea {
 .font-tiny {
   font-size: 12px;
   line-height: 19px; }
+
+pre {
+  overflow: auto;
+  margin-top: 0;
+  margin-bottom: 32px;
+  padding: 32px;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+@media only screen and (max-width: 40em) {
+  pre {
+    margin-bottom: 22px;
+    padding: 25px; } }
+.CoverImage {
+  max-height: 350px;
+  max-width: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover; }

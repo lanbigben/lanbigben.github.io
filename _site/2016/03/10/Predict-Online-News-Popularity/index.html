@@ -10,8 +10,8 @@
   <meta name="description" content="Online News Popularity data set has been selected from the UC Irvine Machine Learning Repository Link. The articles in this data set were published by Mashab...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/">
-  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="http://127.0.0.1:4000/feed.xml">
+  <link rel="canonical" href="http://lanbigben.github.io/2016/03/10/Predict-Online-News-Popularity/">
+  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="http://lanbigben.github.io/feed.xml">
   <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
   <script src="https://cdn.jsdelivr.net/evil-icons/1.7.8/evil-icons.min.js"></script>
 </head>
@@ -158,7 +158,7 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
         
-          <meta itemprop="og:image" content="http://127.0.0.1:4000/images/posts/feature_images/newsheader.jpg">
+          <meta itemprop="og:image" content="http://lanbigben.github.io/images/posts/feature_images/newsheader.jpg">
         
 
         <header class="post__header">
@@ -199,11 +199,11 @@
       <span class="n">main</span> <span class="o">=</span> <span class="s2">"Histogram for publication day"</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s2">"Day"</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">df.onNews</span><span class="o">$</span><span class="n">share2bins</span> <span class="p">)</span> 
 </code></pre>
 </div>
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn4.png" alt="Decision Tree" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/pvn4.png" alt="Decision Tree" /></p>
 
 <p>Most positive cases (high popularity) are captured in Lifestyle, social and tech channel. These channels seem to be much popular than business, entertainment and word channel. For example, Social channel had 76 percent of positive cases (high popularity) and technology channel had 64 percent of positive cases.</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn5.png" alt="Decision Tree" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/pvn5.png" alt="Decision Tree" /></p>
 
 <p>In reviewing positive cases (high popularity) on the publication day, most news shared on weekend seems to be in the “high popularity” group. About 75 percent of the news published on Sunday was popular. The news published on weekday tent to be in “low popularity” group. For example, the majority of the news shared on Wednesday and Tuesday were unpopular.</p>
 
@@ -253,7 +253,7 @@ fancyRpartPlot(fit.rpart8$finalModel)
 </div>
 <p>The visualization below shows the tree structure and the branches of tree. The most important five OnlineNewsPopularity data features are kw_avg_avg, data channel entertainment, data channel tech, is_weekend and dataChanelSocial. These features are on the top of the decision tree and they have the most important power to separate the classes.</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn1.png" alt="Decision Tree" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/pvn1.png" alt="Decision Tree" /></p>
 
 <p><strong>Naïve Bayes Analysis</strong></p>
 
@@ -307,12 +307,12 @@ fancyRpartPlot(fit.rpart8$finalModel)
 </div>
 <p>The visualization below reveals the important variables used in splitting nodes down the tree.  For example, the most important Online News Popularity dataset features are Is_weekend, Kw_avg_avg, Datachanel and Self_reference variables. Most important features from a random forest analysis are about the same with decision tree analysis.</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn2.png" alt="Random Forest" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/pvn2.png" alt="Random Forest" /></p>
 
 <h2 id="performance-evaluation">Performance Evaluation</h2>
 <p>As a result, Naïve Bayes does not work very well with the dataset. Decision tree is one the useful modeling technique since this technique is easy to interpret and understand the result. Moreover, random forest analysis is the best modeling technique with the dataset because it gets the highest accuracy in both training and testing dataset.</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/pvn3.png" alt="Performance comparision" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/pvn3.png" alt="Performance comparision" /></p>
 
 <p>For recommendation and future action, there are some outliers in the variables and these outliers may impact on the accuracy of the predictive models.</p>
 
@@ -325,20 +325,72 @@ fancyRpartPlot(fit.rpart8$finalModel)
         <hr>
 
         
+          <div class="box box--author">
+
+  
+  <figure class="author-image">
+    <div class="img" style="background-image: url(https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAATOAAAAJGU3ZGE5YjZkLWYyNWEtNDUyMi04OWI5LTY4N2E5ODNkYTgxMg.jpg)">
+      <span class="hidden">Ben Rodrawangpai's Picture</span>
+    </div>
+  </figure>
+  
+
+  <div class="box__body">
+
+    <h4 class="box__title">
+      Ben Rodrawangpai
+    </h4>
+
+    
+    <p class="box__text">Ben has over 3 years of experience as a web writer, and also a photographer.</p>
+    
+
+    <div class="author-meta box__text">
+      
+
+      
+      <div class="author-link inline-block">
+        <a href="http://www.twitter.com/lanbig" target="_blank">
+          <span data-icon="ei-sc-twitter" data-size="s"></span>
+        </a>
+      </div>
+      
+
+      
+      <div class="author-link inline-block">
+        <a href="http://www.github.com/lanbig" target="_blank">
+          <span data-icon="ei-sc-github" data-size="s"></span>
+        </a>
+      </div>
+      
+
+      
+      <div class="author-link inline-block">
+        <a href="mailto:lanbig@msn.com" target="_blank">
+          <span data-icon="ei-envelope" data-size="s"></span>
+        </a>
+      </div>
+      
+    </div>
+
+  </div><!-- box__body -->
+
+</div><!-- box -->
+        
 
         <ul class="share-list">
   <li>
-    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Building Predictive Modeling with Decision Tree, Naïve Bayes, Random forest in R.&url=http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
+    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Building Predictive Modeling with Decision Tree, Naïve Bayes, Random forest in R.&url=http://lanbigben.github.io/2016/03/10/Predict-Online-News-Popularity/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
       <div data-icon="ei-sc-twitter" data-size="s" class="share-list__icon share-list__icon--twitter"></div>
     </a>
   </li>
   <li>
-    <a class="share-list__link" href="https://facebook.com/sharer.php?u=http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <a class="share-list__link" href="https://facebook.com/sharer.php?u=http://lanbigben.github.io/2016/03/10/Predict-Online-News-Popularity/" rel="nofollow" target="_blank" title="Share on Facebook">
     <div data-icon="ei-sc-facebook" data-size="s" class="share-list__icon share-list__icon--facebook"></div>
     </a>
   </li>
   <li>
-    <a class="share-list__link" href="https://plus.google.com/share?url=http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/" rel="nofollow" target="_blank" title="Share on Google+">
+    <a class="share-list__link" href="https://plus.google.com/share?url=http://lanbigben.github.io/2016/03/10/Predict-Online-News-Popularity/" rel="nofollow" target="_blank" title="Share on Google+">
     <div data-icon="ei-sc-google-plus" data-size="s" class="share-list__icon share-list__icon--google"></div>
     </a>
   </li>
@@ -369,7 +421,7 @@ fancyRpartPlot(fit.rpart8$finalModel)
 
 <script>
   var disqus_config = function () {
-    this.page.url = "http://127.0.0.1:4000/2016/03/10/Predict-Online-News-Popularity/";
+    this.page.url = "http://lanbigben.github.io/2016/03/10/Predict-Online-News-Popularity/";
   };
 
   (function() {

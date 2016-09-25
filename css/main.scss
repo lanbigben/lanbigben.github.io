@@ -5,3 +5,25 @@
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import 'main';
+
+// Code block
+pre {
+  overflow: auto;
+  margin-top: 0;
+  margin-bottom: 32px;
+  padding: 32px;
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+  @media only screen and (max-width: 40em) {
+    pre {
+      margin-bottom: 22px;
+      padding: 25px; } }
+
+// Cover Image
+.CoverImage {
+  max-height: 350px;
+  max-width: 100%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover; }

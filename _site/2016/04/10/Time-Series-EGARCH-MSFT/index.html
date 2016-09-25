@@ -10,8 +10,8 @@
   <meta name="description" content="In this example, we are going to forecast the volatility of Microsoft stock. First, we will attempt to discover dataset. Our data set consists of closing pri...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/">
-  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="http://127.0.0.1:4000/feed.xml">
+  <link rel="canonical" href="http://lanbigben.github.io/2016/04/10/Time-Series-EGARCH-MSFT/">
+  <link rel="alternate" type="application/rss+xml" title="Lanbig" href="http://lanbigben.github.io/feed.xml">
   <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,300" rel="stylesheet" type="text/css">
   <script src="https://cdn.jsdelivr.net/evil-icons/1.7.8/evil-icons.min.js"></script>
 </head>
@@ -158,7 +158,7 @@
       <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
         
-          <meta itemprop="og:image" content="http://127.0.0.1:4000/images/posts/feature_images/timeseries1.jpg">
+          <meta itemprop="og:image" content="http://lanbigben.github.io/images/posts/feature_images/timeseries1.jpg">
         
 
         <header class="post__header">
@@ -185,7 +185,7 @@
 
 </code></pre>
 </div>
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/timeseries.png" alt="MSFT Time Series" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/timeseries.png" alt="MSFT Time Series" /></p>
 
 <p>Originally, we took the data set from the IPO (Initial Public Offering) date of March 13, 1986. However, there was too much of trend since the stock has split many times. With this in mind, we decided to start to our data set in February of 1998. As you can see there is a steep run up during the dot com bubble of the late 1990’s and early 2000. The tech bubble peaked on March 10, 2000. Next there was a steep drop, and then the stock hung around 20 for years. Then during the Mortgage crisis the stock dropped down into the teens, bottoming in 2009. Since the company made Satya Nadella the CEO, the stock has had a nice rally up to the volatility of early 2016.</p>
 
@@ -211,11 +211,11 @@
 
 </code></pre>
 </div>
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/logret.png" alt="MSFT Time Series" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/logret.png" alt="MSFT Time Series" /></p>
 
 <p>The ACF plot(below) of the squared log returns of MSFT decays very slowly. The lags are all much larger than 2 standard deviations. This confirms large autocorrelations in the squared log returns. Therefore we can conclude that the log returns process has a strong non-linear dependence.</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/archeffect.png" alt="MSFT Time Series" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/archeffect.png" alt="MSFT Time Series" /></p>
 
 <p>Since we have confirmed serial correlation in the conditional variance of the process, we can say that the conditional variance of the process at time t is a function of the variance at previous times. Therefore we can use the past to explain or predict the current variance. This enables us to use GARCH model to model the variance of the MSFT stock price time series.</p>
 
@@ -319,7 +319,7 @@ The p-values &gt; .05 . Therefore we can’t reject the hypothesis that the sele
 
 <p>T-distribution probability plot(left) for residuals show that t-distribution is appropriate. Some departure is seen under the left tail for extreme residuals (associated to extremely low returns)</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/std-qqplot.png" alt="MSFT Time Series" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/std-qqplot.png" alt="MSFT Time Series" /></p>
 
 <h2 id="residual-analysis-and-model-diagnostics">Residual analysis and model diagnostics</h2>
 
@@ -364,12 +364,12 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
 
 <p>The News Impact Curve(below right) reiterates the fact that in our model the leverage effect is significant and that the volatility of our data set reacts more strongly to  negative shocks than to positive shocks. You can see by looking at the graph that the magnitude of the volatility skyrockets as the shocks are more negative.</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/residual.png" alt="MSFT Time Series" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/residual.png" alt="MSFT Time Series" /></p>
 
 <h2 id="forecast-analysis">Forecast analysis</h2>
 <p>Based on the analysis, EGARCH(1,1) model for variance and t-distribution turned out to be the best model BIC supports using the EGARCH model better than the GARCH model and TGARCH model. Forecasts are computed using the ugarchforecast function for the next 12-step ahead. The plot of the forecast unconditional sigma shows that the stock volatility will slightly decrease in the next 12-step ahead.</p>
 
-<p><img src="http://127.0.0.1:4000/images/posts/content_images/forecast.png" alt="MSFT Time Series" /></p>
+<p><img src="http://lanbigben.github.io/images/posts/content_images/forecast.png" alt="MSFT Time Series" /></p>
 
 <h2 id="sum-up">Sum up</h2>
 
@@ -386,20 +386,72 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
         <hr>
 
         
+          <div class="box box--author">
+
+  
+  <figure class="author-image">
+    <div class="img" style="background-image: url(https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAATOAAAAJGU3ZGE5YjZkLWYyNWEtNDUyMi04OWI5LTY4N2E5ODNkYTgxMg.jpg)">
+      <span class="hidden">Ben Rodrawangpai's Picture</span>
+    </div>
+  </figure>
+  
+
+  <div class="box__body">
+
+    <h4 class="box__title">
+      Ben Rodrawangpai
+    </h4>
+
+    
+    <p class="box__text">Ben has over 3 years of experience as a web writer, and also a photographer.</p>
+    
+
+    <div class="author-meta box__text">
+      
+
+      
+      <div class="author-link inline-block">
+        <a href="http://www.twitter.com/lanbig" target="_blank">
+          <span data-icon="ei-sc-twitter" data-size="s"></span>
+        </a>
+      </div>
+      
+
+      
+      <div class="author-link inline-block">
+        <a href="http://www.github.com/lanbig" target="_blank">
+          <span data-icon="ei-sc-github" data-size="s"></span>
+        </a>
+      </div>
+      
+
+      
+      <div class="author-link inline-block">
+        <a href="mailto:lanbig@msn.com" target="_blank">
+          <span data-icon="ei-envelope" data-size="s"></span>
+        </a>
+      </div>
+      
+    </div>
+
+  </div><!-- box__body -->
+
+</div><!-- box -->
+        
 
         <ul class="share-list">
   <li>
-    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Using EGARCH to forecast volatility in Microsoft Stock.&url=http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
+    <a class="share-list__link" href="https://twitter.com/intent/tweet?text=Using EGARCH to forecast volatility in Microsoft Stock.&url=http://lanbigben.github.io/2016/04/10/Time-Series-EGARCH-MSFT/&via=&related=" rel="nofollow" target="_blank" title="Share on Twitter">
       <div data-icon="ei-sc-twitter" data-size="s" class="share-list__icon share-list__icon--twitter"></div>
     </a>
   </li>
   <li>
-    <a class="share-list__link" href="https://facebook.com/sharer.php?u=http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/" rel="nofollow" target="_blank" title="Share on Facebook">
+    <a class="share-list__link" href="https://facebook.com/sharer.php?u=http://lanbigben.github.io/2016/04/10/Time-Series-EGARCH-MSFT/" rel="nofollow" target="_blank" title="Share on Facebook">
     <div data-icon="ei-sc-facebook" data-size="s" class="share-list__icon share-list__icon--facebook"></div>
     </a>
   </li>
   <li>
-    <a class="share-list__link" href="https://plus.google.com/share?url=http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/" rel="nofollow" target="_blank" title="Share on Google+">
+    <a class="share-list__link" href="https://plus.google.com/share?url=http://lanbigben.github.io/2016/04/10/Time-Series-EGARCH-MSFT/" rel="nofollow" target="_blank" title="Share on Google+">
     <div data-icon="ei-sc-google-plus" data-size="s" class="share-list__icon share-list__icon--google"></div>
     </a>
   </li>
@@ -430,7 +482,7 @@ ARCH Lag[7]   0.19333 2.315 1.543  0.9973
 
 <script>
   var disqus_config = function () {
-    this.page.url = "http://127.0.0.1:4000/2016/04/10/Time-Series-EGARCH-MSFT/";
+    this.page.url = "http://lanbigben.github.io/2016/04/10/Time-Series-EGARCH-MSFT/";
   };
 
   (function() {

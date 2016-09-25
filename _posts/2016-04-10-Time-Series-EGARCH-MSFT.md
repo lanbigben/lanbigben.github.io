@@ -2,6 +2,8 @@
 layout: post
 title: Using EGARCH to forecast volatility in Microsoft Stock. 
 image: "/images/posts/feature_images/timeseries1.jpg"
+featured: true
+author: ben
 ---
 
 In this example, we are going to forecast the volatility of Microsoft stock. First, we will attempt to discover dataset. Our data set consists of closing prices of MSFT from January 2, 1998 to February 26, 2016. The number of observations is equal to 4,567 closing prices. Our data was retrieved from the Yahoo! Finance website under historical data. Here is plot of the time series

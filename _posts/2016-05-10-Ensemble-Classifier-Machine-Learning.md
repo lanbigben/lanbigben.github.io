@@ -2,6 +2,7 @@
 layout: post
 title: Ensemble Classifier - Machine Learning
 image: '/images/posts/feature_images/ensemble4.jpg'
+author: ben
 ---
 
 Boosting and Bagging are said to be methods that can improve classification algorithm performance. Having also learned multiple ensemble classifier methods, we wonder which methods between Boosting and Bagging can be outperformed for prediction accuracy improvement. Our goals are to experiment different types of weak-learner-based ensemble classifier with boosting and bagging parameters, and compare them with the performance evaluation procedures.
@@ -57,7 +58,7 @@ qplot(Bal_data_train$class, geom="bar",ylab = "count", main = "Class Distributio
 train_X = Bal_data_train[,2:65]
 train_Y = as.factor(Bal_data_train[,1])
 ```
-![Ensemble Tree](http://{{ site.url }}/images/posts/content_images/enb1.png)
+![Ensemble Tree]({{ site.url }}/images/posts/content_images/enb1.png)
 
 Principle Component Analysis (PCA) is the feature extraction technique that can reduce the dimension space of the data set. This data set has many attributes (more than 60 attributes). After applying PCA, the first feature we extract from the attribute space captures the most variability in the data. 
 
