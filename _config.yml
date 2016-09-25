@@ -8,7 +8,7 @@
 # Site settings
 title: Lanbig
 email: lanbig@msn.com
-description: In the world of Machine Leaning 
+description: In the world of Data Science and Machine Leaning. 
 baseurl: '' # the subpath of your site, e.g. /blog
 url: 'https://lanbigben.github.io' # the base hostname & protocol for your site
 twitter_username: 
@@ -39,9 +39,9 @@ authors:
   ben:
     name: Ben
     display_name: Ben Rodrawangpai
-    bio: Ben has over 3 years of experience as a web writer, and also a photographer.
+    bio: Ben has over 3 years of experience in Data Science, and he is a MSc in Predictive Analytics candidate at DePaul University. Also, he is working as a Data Analytics Intern at Underwriters Laboratories Inc.
     gravatar: https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAATOAAAAJGU3ZGE5YjZkLWYyNWEtNDUyMi04OWI5LTY4N2E5ODNkYTgxMg.jpg
     email: lanbig@msn.com
     web: 
-    twitter: lanbig
+    linkedin: lanbig
     github: lanbig
